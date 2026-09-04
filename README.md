@@ -54,7 +54,7 @@ ADMIN_USER=svo ADMIN_PASS=miClaveSegura npm start
 
 - **Logo:** reemplaza `public/img/logo.png` por tu archivo (mismo nombre) para actualizarlo en todo el sitio.
 - **Testimonios y portafolio:** edita directamente `data/testimonios.json` y `data/portafolio.json`.
-- **Número de WhatsApp:** cambia el enlace `https://wa.me/522721947810` en `views/partials/footer.ejs`.
+- **Número de WhatsApp:** cambia el enlace `https://wa.me/522721569109` en `views/partials/footer.ejs`.
 - **Colores:** la paleta está definida en el bloque `tailwind.config` dentro de `views/partials/header.ejs` (colores `navy`, `brand`, `cyan`).
 
 ## Notas técnicas
