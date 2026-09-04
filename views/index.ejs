@@ -1,0 +1,331 @@
+<%- include('partials/header', { titulo: 'SVO · Diseñamos Páginas Web en Orizaba que Generan Clientes' }) %>
+
+<!-- HERO: dividido, texto + mockup de navegador -->
+<section class="relative overflow-hidden pt-[68px]">
+  <div class="absolute inset-0 grid-bg"></div>
+  <div class="absolute inset-0 sweep-line"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-navy-950/30 via-navy-950/70 to-navy-950"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-20 pb-20 md:pt-28 md:pb-28 grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-btn text-[11px] text-brand-300 mb-6">
+        <span class="rec-dot"></span> Presencia Online · Orizaba, Ver.
+      </div>
+      <h1 class="font-display text-[2.4rem] leading-[1.08] sm:text-5xl md:text-[3.6rem] font-700 text-white">
+        Tu negocio necesita
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-brand-500 to-cyan-400">
+          una página que venda
+        </span>
+      </h1>
+      <p class="mt-6 max-w-md text-slate-400 text-lg">
+        Diseñamos, publicamos y optimizamos el sitio web de tu negocio para que cada visita se convierta en una llamada, un mensaje o una venta.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#contacto" class="h-12 px-7 rounded-xl bg-gradient-to-r from-brand-600 to-cyan-400 text-navy-950 font-semibold flex items-center hover:opacity-90 transition-opacity">
+          Quiero más información
+        </a>
+        <a href="#precio" class="h-12 px-7 rounded-xl glass-btn text-slate-200 font-medium flex items-center hover:text-white transition-colors">
+          Ver precios
+        </a>
+      </div>
+    </div>
+
+    <!-- Mockup de navegador flotante con chips de estadística -->
+    <div class="relative">
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span></span><span></span><span></span>
+          <span class="browser-url">tunegocio.com.mx</span>
+        </div>
+        <div class="browser-canvas">
+          <div class="canvas-line w-2/3"></div>
+          <div class="canvas-line w-1/3"></div>
+          <div class="canvas-hero"></div>
+          <div class="grid grid-cols-3 gap-2 mt-3">
+            <div class="canvas-chip"></div>
+            <div class="canvas-chip"></div>
+            <div class="canvas-chip"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-chip -left-6 top-8">
+        <span class="text-cyan-400 font-display font-700">340+</span>
+        <span class="text-slate-400 text-[11px]">páginas y campañas</span>
+      </div>
+      <div class="floating-chip -right-4 bottom-10">
+        <span class="text-brand-400 font-display font-700">2015</span>
+        <span class="text-slate-400 text-[11px]">generando soluciones</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS: mosaico bento con estadísticas + beneficios mezclados -->
+<section id="nosotros" class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t border-white/5">
+  <p class="text-brand-400 text-xs tracking-wide font-medium mb-3">¿Por qué contratarnos?</p>
+  <h2 class="font-display text-3xl md:text-4xl font-600 text-white leading-tight mb-10 max-w-xl">
+    Lo que nos hace los mejores
+  </h2>
+
+  <div class="bento-grid">
+    <div class="bento-cell bento-lg">
+      <p class="text-slate-300 leading-relaxed">
+        En SVO diseñamos páginas web con calidad, profesionalismo y una estrategia de conversión pensada para tu negocio, dándote presencia a nivel local, nacional e internacional.
+      </p>
+      <p class="mt-5 flex items-start gap-2.5 text-sm">
+        <span class="text-cyan-400 mt-0.5">✓</span>
+        <span class="text-slate-300">Más de <span class="text-white font-medium">340 empresas</span> han confiado en nosotros.</span>
+      </p>
+    </div>
+
+    <div class="bento-cell bento-accent" style="--accent:#2B7DD1">
+      <span class="stat-icon">📍</span>
+      <p class="text-white font-medium">Orizaba, Veracruz</p>
+      <p class="text-slate-400 text-sm">Y zona de las Altas Montañas</p>
+    </div>
+
+    <div class="bento-cell bento-accent" style="--accent:#35D9CB">
+      <span class="stat-icon">🚀</span>
+      <p class="text-white font-medium">Optimización SEO</p>
+      <p class="text-slate-400 text-sm">Para que te encuentren en Google</p>
+    </div>
+
+    <div class="bento-cell bento-accent" style="--accent:#4FA3E3">
+      <span class="stat-icon">📱</span>
+      <p class="text-white font-medium">100% responsivo</p>
+      <p class="text-slate-400 text-sm">Se ve perfecto en cualquier pantalla</p>
+    </div>
+
+    <div class="bento-cell bento-accent" style="--accent:#16305C">
+      <span class="stat-icon">🔒</span>
+      <p class="text-white font-medium">Certificado SSL</p>
+      <p class="text-slate-400 text-sm">Seguridad incluida en todos los planes</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO: línea de tiempo vertical alternada -->
+<section class="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t border-white/5">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+    <div>
+      <p class="text-brand-400 text-xs tracking-wide font-medium mb-3">Nuestra estrategia</p>
+      <h2 class="font-display text-3xl md:text-4xl font-600 text-white">Cómo lo hacemos</h2>
+    </div>
+    <a href="#contacto" class="h-11 px-6 rounded-xl bg-gradient-to-r from-brand-600 to-cyan-400 text-navy-950 font-semibold flex items-center w-fit hover:opacity-90 transition-opacity">
+      Impulsa mi negocio
+    </a>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-card">
+        <span class="step-number">1</span>
+        <h3 class="text-white font-medium mt-4 mb-2">Análisis de tus objetivos</h3>
+        <p class="text-slate-400 text-sm">Estudiamos tu negocio, productos y metas para diseñar una página de acuerdo a tus necesidades actuales.</p>
+      </div>
+    </div>
+    <div class="timeline-item timeline-right">
+      <div class="timeline-card">
+        <span class="step-number">2</span>
+        <h3 class="text-white font-medium mt-4 mb-2">Diseño de página web</h3>
+        <p class="text-slate-400 text-sm">Con un equipo de diseñadores y nuestras recomendaciones, construimos una página web ganadora.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-card">
+        <span class="step-number">3</span>
+        <h3 class="text-white font-medium mt-4 mb-2">Campaña publicitaria</h3>
+        <p class="text-slate-400 text-sm">Ejecutamos una campaña dirigida a tus clientes potenciales para atraer tráfico desde el primer día.</p>
+      </div>
+    </div>
+    <div class="timeline-item timeline-right">
+      <div class="timeline-card">
+        <span class="step-number">4</span>
+        <h3 class="text-white font-medium mt-4 mb-2">Optimizamos</h3>
+        <p class="text-slate-400 text-sm">Analizamos clics, conversiones y comportamiento de los visitantes para mejorar continuamente los resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS: spotlight, uno grande con navegación -->
+<section id="testimonios" class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t border-white/5">
+  <div class="text-center mb-10">
+    <p class="text-brand-400 text-xs tracking-wide font-medium mb-3">Testimonios</p>
+    <h2 class="font-display text-3xl md:text-4xl font-600 text-white">
+      Lo que logramos <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-400">juntos</span>
+    </h2>
+  </div>
+
+  <div id="spotlight" class="spotlight-card">
+    <span class="spotlight-quote">"</span>
+    <div id="spotlightBody">
+      <% testimonios.forEach(function(t, i){ %>
+        <div class="spotlight-slide <%= i === 0 ? 'is-active' : '' %>" data-index="<%= i %>">
+          <p class="text-slate-200 text-lg leading-relaxed mb-6"><%= t.texto %></p>
+          <p class="text-white font-medium text-sm"><%= t.nombre %></p>
+          <p class="text-slate-500 text-xs"><%= t.puesto %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <div id="spotlightDots" class="flex justify-center gap-2 mt-6">
+    <% testimonios.forEach(function(t, i){ %>
+      <button class="spotlight-dot <%= i === 0 ? 'is-active' : '' %>" data-index="<%= i %>" aria-label="Testimonio <%= i+1 %>"></button>
+    <% }) %>
+  </div>
+</section>
+
+<!-- PRECIO: un plan destacado grande + dos compactos -->
+<section id="precio" class="relative py-16 md:py-24 border-t border-white/5 overflow-hidden">
+  <div class="absolute inset-0 grid-bg opacity-40"></div>
+  <div class="relative max-w-6xl mx-auto px-5 md:px-8">
+    <div class="text-center mb-14">
+      <p class="text-brand-400 text-xs tracking-wide font-medium mb-3">Estrategias y servicios</p>
+      <h2 class="font-display text-3xl md:text-4xl font-600 text-white mb-4">
+        Si no encuentras lo que buscas, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-400">contáctanos</span>
+      </h2>
+      <p class="text-slate-400 max-w-2xl mx-auto">
+        Nuestros planes están pensados para que tu página web no solo exista, sino que genere ventas y atraiga clientes nuevos en Orizaba y más allá.
+      </p>
+    </div>
+
+    <%
+      const destacado = planes.find(p => p.destacado) || planes[0];
+      const otros = planes.filter(p => p.id !== destacado.id);
+    %>
+
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-stretch">
+      <!-- Plan destacado -->
+      <div class="plan-featured">
+        <span class="plan-tag">Más contratado</span>
+        <h3 class="font-display text-2xl font-600 text-white mb-1"><%= destacado.nombre %></h3>
+        <p class="text-slate-300 text-sm mb-6 max-w-sm"><%= destacado.descripcion %></p>
+        <p class="mb-7">
+          <span class="text-4xl font-display font-700 text-white">$<%= destacado.precio.toLocaleString('es-MX') %></span>
+          <span class="text-slate-400 text-sm"> MXN</span>
+        </p>
+        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8">
+          <% destacado.caracteristicas.forEach(function(c){ %>
+            <p class="flex items-start gap-2.5 text-sm text-slate-200">
+              <span class="text-cyan-400 mt-0.5 flex-shrink-0">✓</span> <%= c %>
+            </p>
+          <% }) %>
+        </div>
+        <a href="#contacto" class="inline-block h-12 px-8 leading-[48px] rounded-xl font-semibold bg-gradient-to-r from-brand-600 to-cyan-400 text-navy-950 hover:opacity-90 transition-opacity">
+          Contratar
+        </a>
+      </div>
+
+      <!-- Planes compactos -->
+      <div class="flex flex-col gap-5">
+        <% otros.forEach(function(p){ %>
+          <div class="plan-compact">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-display text-lg font-600 text-white"><%= p.nombre %></h4>
+              <p class="text-xl font-display font-700 text-white">$<%= p.precio.toLocaleString('es-MX') %></p>
+            </div>
+            <p class="text-slate-400 text-sm mb-4"><%= p.descripcion %></p>
+            <details class="mb-4">
+              <summary class="text-xs text-brand-400 cursor-pointer hover:text-brand-300">Ver características (<%= p.caracteristicas.length %>)</summary>
+              <div class="grid gap-2 mt-3">
+                <% p.caracteristicas.forEach(function(c){ %>
+                  <p class="flex items-start gap-2.5 text-sm text-slate-300">
+                    <span class="text-cyan-400 mt-0.5 flex-shrink-0">✓</span> <%= c %>
+                  </p>
+                <% }) %>
+              </div>
+            </details>
+            <a href="#contacto" class="block text-center h-10 leading-[40px] rounded-lg glass-btn text-sm text-slate-100 font-medium hover:text-white">
+              Contratar
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO: mosaico con alturas variadas -->
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t border-white/5">
+  <div class="text-center mb-10">
+    <p class="text-brand-400 text-xs tracking-wide font-medium mb-3">Páginas web Orizaba</p>
+    <h2 class="font-display text-3xl md:text-4xl font-600 text-white">Portafolio de páginas web</h2>
+  </div>
+
+  <div id="portafolioFiltros" class="flex flex-wrap justify-center gap-2 mb-10">
+    <button data-cat="Todos" class="filtro-btn is-active">Todos</button>
+    <button data-cat="Aterrizaje" class="filtro-btn">Páginas de aterrizaje</button>
+    <button data-cat="Empresarial" class="filtro-btn">Páginas empresariales</button>
+    <button data-cat="Catálogo" class="filtro-btn">Catálogo o tienda virtual</button>
+  </div>
+
+  <div id="portafolioGrid" class="masonry-grid">
+    <% portafolio.forEach(function(item, i){ %>
+      <div class="mockup-card <%= i % 3 === 1 ? 'mockup-tall' : '' %>" data-cat="<%= item.categoria %>">
+        <div class="mockup-browser accent-<%= item.acento %>">
+          <div class="mockup-dots"><span></span><span></span><span></span></div>
+          <div class="mockup-body">
+            <div class="mockup-line w-2/3"></div>
+            <div class="mockup-line w-1/2"></div>
+            <div class="mockup-block <%= i % 3 === 1 ? 'h-32' : '' %>"></div>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-white font-medium"><%= item.nombre %></p>
+          <p class="text-slate-500 text-sm"><%= item.rubro %></p>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<!-- FAQ: dos columnas -->
+<section id="faq" class="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t border-white/5">
+  <div class="text-center mb-10">
+    <p class="text-brand-400 text-xs tracking-wide font-medium mb-3">Ayuda</p>
+    <h2 class="font-display text-3xl md:text-4xl font-600 text-white">FAQs: información útil para ti</h2>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-3 md:gap-4 items-start">
+    <div class="space-y-3">
+      <div class="faq-item">
+        <button class="faq-question">¿Qué tipo de página diseñan?</button>
+        <div class="faq-answer">
+          <p class="text-slate-400 text-sm mb-2">Diseñamos:</p>
+          <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
+            <li>Landing page</li>
+            <li>Páginas corporativas</li>
+            <li>Tiendas virtuales</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Qué servicios ofrecen?</button>
+        <div class="faq-answer"><p class="text-slate-400 text-sm">Diseño web, hosting y dominio, certificado SSL, campañas publicitarias, y soporte técnico durante todo el primer año.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Cuánto cuesta una página web?</button>
+        <div class="faq-answer"><p class="text-slate-400 text-sm">Depende del tipo de página que necesites. Nuestros planes van desde $3,490 hasta $8,990 MXN. Puedes ver el detalle en la sección de precios.</p></div>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <div class="faq-item">
+        <button class="faq-question">¿En cuánto tiempo me realizan la página web?</button>
+        <div class="faq-answer"><p class="text-slate-400 text-sm">Entre 7 y 9 días hábiles, dependiendo del plan y la cantidad de contenido que nos compartas.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Cómo son los pagos?</button>
+        <div class="faq-answer"><p class="text-slate-400 text-sm">Solicitamos un anticipo del 50% para iniciar el proyecto y el 50% restante contra entrega. Aceptamos transferencia y tarjeta.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Qué incluye una página web en Orizaba?</button>
+        <div class="faq-answer"><p class="text-slate-400 text-sm">Dominio, hosting, certificado SSL, formulario de contacto, integración con redes sociales, mapa de ubicación y soporte técnico por un año.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

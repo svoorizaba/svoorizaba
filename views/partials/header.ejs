@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= typeof titulo !== 'undefined' ? titulo : 'SVO · Diseño de Páginas Web en Orizaba' %></title>
+<meta name="description" content="Diseñamos páginas web en Orizaba que generan clientes: landing pages, páginas empresariales y tiendas virtuales. SVO — Sistemas de Videovigilancia y Desarrollo Web.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950:'#050B18', 900:'#0A1730', 800:'#10203F', 700:'#16305C' },
+          brand: { 600:'#1857A4', 500:'#2B7DD1', 400:'#4FA3E3' },
+          cyan: { 400:'#35D9CB' },
+          live: { 500:'#FF3B3B' }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-navy-950 text-slate-100 font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-40 glass-panel border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 group">
+      <img src="/img/logo.png" alt="SVO Sistemas de Videovigilancia Orizaba" class="h-10 w-auto brand-logo">
+      <span class="font-display leading-tight">
+        <span class="block text-[15px] font-700 tracking-tight text-white">SVO</span>
+        <span class="block text-[10px] uppercase tracking-[0.18em] text-brand-400 -mt-0.5">Páginas Web Orizaba</span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+      <a href="/#nosotros" class="hover:text-white transition-colors">Nosotros</a>
+      <a href="/#testimonios" class="hover:text-white transition-colors">Testimonios</a>
+      <a href="/#precio" class="hover:text-white transition-colors">Precio</a>
+      <a href="/#faq" class="hover:text-white transition-colors">Faq</a>
+      <a href="/#contacto" class="hover:text-white transition-colors">Contacto</a>
+    </nav>
+
+    <a href="#contacto" class="hidden sm:flex h-10 px-5 items-center rounded-full glass-btn text-sm text-slate-100 font-medium hover:text-white">
+      Asesoría inmediata
+    </a>
+  </div>
+</header>

@@ -1,0 +1,8 @@
+[
+  { "id": "1", "nombre": "Refaccionaria Hernández", "categoria": "Aterrizaje", "rubro": "Refacciones automotrices", "acento": "brand" },
+  { "id": "2", "nombre": "PROSAN Comedores", "categoria": "Empresarial", "rubro": "Servicios industriales", "acento": "cyan" },
+  { "id": "3", "nombre": "GHL Gasolineras", "categoria": "Empresarial", "rubro": "Equipos para estaciones de servicio", "acento": "navy" },
+  { "id": "4", "nombre": "BioAvanza Salud", "categoria": "Aterrizaje", "rubro": "Suplementos y bienestar", "acento": "cyan" },
+  { "id": "5", "nombre": "Sposabella Boutique", "categoria": "Catálogo", "rubro": "Vestidos y accesorios", "acento": "brand" },
+  { "id": "6", "nombre": "BoneFix Ferretería", "categoria": "Catálogo", "rubro": "Materiales y herramientas", "acento": "navy" }
+]

@@ -1,0 +1,61 @@
+[
+  {
+    "id": "1",
+    "nombre": "Página de Aterrizaje",
+    "precio": 3490,
+    "destacado": false,
+    "descripcion": "Ideal para lanzar una promoción o captar clientes con una sola oferta clara.",
+    "caracteristicas": [
+      "Dominio por 1 año .com o .com.mx",
+      "Hosting por 1 año con capacidad ilimitada",
+      "1 sección o pestaña",
+      "Certificado SSL de seguridad",
+      "Soporte técnico por 1 año",
+      "Dos cambios menores al mes durante 1 año",
+      "Formulario de contacto",
+      "Visible en celulares y tablets",
+      "Enlace a redes sociales",
+      "Mapa de ubicación",
+      "Tiempo de elaboración: 7 días hábiles"
+    ]
+  },
+  {
+    "id": "2",
+    "nombre": "Página Empresarial",
+    "precio": 5990,
+    "destacado": true,
+    "descripcion": "La opción más contratada: presencia completa para tu negocio con varias secciones.",
+    "caracteristicas": [
+      "Dominio por 1 año .com o .com.mx",
+      "Hosting por 1 año con capacidad ilimitada",
+      "Hasta 12 secciones o pestañas",
+      "Certificado SSL de seguridad",
+      "Soporte técnico por 1 año",
+      "Dos cambios menores al mes durante 1 año",
+      "Formulario de contacto",
+      "Integración con Google Analytics",
+      "Correos empresariales ilimitados",
+      "Galería de imágenes",
+      "Tiempo de elaboración: 9 días hábiles"
+    ]
+  },
+  {
+    "id": "3",
+    "nombre": "Catálogo o Tienda Virtual",
+    "precio": 8990,
+    "destacado": false,
+    "descripcion": "Vende en línea con un catálogo autoadministrable y capacidad de crecimiento.",
+    "caracteristicas": [
+      "Dominio por 1 año .com o .com.mx",
+      "Hosting por 1 año con capacidad ilimitada",
+      "Hasta 10 secciones informativas",
+      "Capacidad para número ilimitado de productos (incluimos 30)",
+      "Página autoadministrable: crea, edita o elimina productos tú mismo",
+      "Certificado SSL de seguridad",
+      "Soporte técnico por 1 año",
+      "Formulario de contacto",
+      "Visible en celulares y tablets",
+      "Tiempo de elaboración: 9 días hábiles"
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso administrador · SVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { navy: { 950:'#050B18', 900:'#0A1730', 800:'#10203F' }, brand: { 600:'#1857A4', 500:'#2B7DD1', 400:'#4FA3E3' }, cyan: { 400:'#35D9CB' }, live: { 500:'#FF3B3B' } },
+    fontFamily: { display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+  } } }
+</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-navy-950 text-slate-100 font-body antialiased min-h-screen flex items-center justify-center px-5">
+
+<div class="w-full max-w-sm">
+  <div class="flex flex-col items-center mb-8">
+    <img src="/img/logo.png" alt="SVO" class="h-12 w-auto brand-logo mb-4">
+    <h1 class="font-display text-xl font-600 text-white">Panel de administración</h1>
+    <p class="text-slate-500 text-sm mt-1">Accede para gestionar planes y mensajes</p>
+  </div>
+
+  <form method="POST" action="/admin/login" class="glass-panel rounded-2xl p-7 space-y-4">
+    <% if (error) { %>
+      <p class="text-sm text-live-500 bg-live-500/10 border border-live-500/30 rounded-lg px-3 py-2"><%= error %></p>
+    <% } %>
+    <div>
+      <label class="block text-xs text-slate-400 mb-1.5">Usuario</label>
+      <input required name="usuario" type="text" class="field" placeholder="admin">
+    </div>
+    <div>
+      <label class="block text-xs text-slate-400 mb-1.5">Contraseña</label>
+      <input required name="contrasena" type="password" class="field" placeholder="••••••••">
+    </div>
+    <button type="submit" class="w-full h-11 rounded-xl bg-gradient-to-r from-brand-600 to-cyan-400 text-navy-950 font-semibold hover:opacity-90 transition-opacity">
+      Entrar
+    </button>
+  </form>
+
+  <a href="/" class="block text-center text-sm text-slate-500 hover:text-slate-300 mt-6 transition-colors">← Volver al sitio</a>
+</div>
+
+</body>
+</html>
