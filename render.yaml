@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: svo-paginas-web
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASS
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+    # Si quieres que los planes, testimonios y mensajes de contacto
+    # sobrevivan a cada despliegue, agrega un disco persistente
+    # (requiere un plan de pago) y descomenta estas líneas:
+    # disk:
+    #   name: svo-data
+    #   mountPath: /opt/render/project/src/data
+    #   sizeGB: 1

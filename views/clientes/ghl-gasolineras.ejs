@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHL Gasolineras · Equipos y sistemas para estaciones de servicio</title>
+<meta name="description" content="GHL Gasolineras: dispensarios, tanques de almacenamiento, sistemas de medición y equipo de seguridad para estaciones de servicio en México.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          steel: { 950:'#12161A', 900:'#1B2126', 800:'#252D33', 700:'#3A444C' },
+          petrol: { 500:'#0E7C86', 400:'#159AA6' },
+          amber: { 400:'#F5A623', 500:'#DB8E12' },
+          fog: { 50:'#F4F6F5' }
+        },
+        fontFamily: {
+          display: ['Oswald', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F4F6F5; }
+  ::selection { background: #F5A623; color: #12161A; }
+
+  .ghl-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px;
+    border-radius: 6px;
+    background: #12161A;
+    border: 1.5px solid #F5A623;
+  }
+
+  .btn-amber {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; padding: 0 28px;
+    border-radius: 6px;
+    background: #F5A623; color: #12161A; font-weight: 700; font-size: 13.5px;
+    letter-spacing: .02em; text-transform: uppercase;
+    transition: background .2s ease;
+  }
+  .btn-amber:hover { background: #DB8E12; }
+
+  .btn-line {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; padding: 0 28px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(244,246,245,0.35);
+    color: #F4F6F5; font-weight: 600; font-size: 13.5px;
+    letter-spacing: .02em; text-transform: uppercase;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .btn-line:hover { border-color: #F5A623; background: rgba(245,166,35,0.08); }
+
+  .stat-strip { border-top: 1px solid rgba(244,246,245,0.12); }
+  .stat-strip > div { border-right: 1px solid rgba(244,246,245,0.12); }
+  .stat-strip > div:last-child { border-right: none; }
+
+  /* ---------- Pestañas de equipos ---------- */
+  .tab-btn {
+    padding: 12px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px; letter-spacing: .03em; text-transform: uppercase;
+    color: #3A444C;
+    border-bottom: 3px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: #12161A; }
+  .tab-btn.is-active { color: #12161A; border-color: #F5A623; }
+  .tab-panel { display: none; }
+  .tab-panel.is-active { display: grid; }
+
+  /* ---------- Tabla de especificaciones ---------- */
+  .spec-table { width: 100%; border-collapse: collapse; }
+  .spec-table th {
+    text-align: left; font-family: 'Oswald', sans-serif; font-size: 12.5px;
+    text-transform: uppercase; letter-spacing: .04em; color: #F4F6F5;
+    background: #12161A; padding: 12px 16px;
+  }
+  .spec-table td { padding: 13px 16px; font-size: 13.5px; color: #252D33; border-bottom: 1px solid #E3E7E5; }
+  .spec-table tr:nth-child(even) td { background: #FAFBFA; }
+  .spec-table td:first-child { font-weight: 600; }
+
+  /* ---------- Certificaciones ---------- */
+  .cert-badge {
+    display: flex; align-items: center; gap: 10px;
+    border: 1.5px solid #E3E7E5; border-radius: 8px;
+    padding: 14px 16px;
+    background: #fff;
+  }
+  .cert-icon { font-size: 20px; }
+
+  .field-ghl {
+    width: 100%; height: 46px; padding: 0 14px;
+    border-radius: 6px; border: 1.5px solid #3A444C;
+    background: #1B2126; color: #F4F6F5; font-size: 14px; outline: none;
+  }
+  .field-ghl::placeholder { color: #6B747B; }
+  textarea.field-ghl { height: auto; padding-top: 12px; resize: none; }
+  .field-ghl:focus { border-color: #F5A623; }
+
+  .toast-ghl {
+    background: #12161A; color: #F4F6F5; border: 1.5px solid #F5A623;
+    font-size: 13px; padding: 12px 16px; border-radius: 6px;
+    animation: toastInGhl .25s ease;
+  }
+  @keyframes toastInGhl { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="text-steel-950 font-body antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 inset-x-0 z-40 bg-steel-950 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="ghl-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 21h9M6 21V9a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v12M15 8l3-3M18 5v4h-4M18 21v-6a2 2 0 0 0-2-2h-1"/></svg>
+      </span>
+      <span class="font-display leading-tight">
+        <span class="block text-[16px] tracking-wide text-fog-50">GHL GASOLINERAS</span>
+        <span class="block text-[9.5px] uppercase tracking-[0.2em] text-amber-400 font-body font-semibold -mt-0.5">Equipo para estaciones de servicio</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-[13px] font-medium text-fog-50/70 uppercase tracking-wide">
+      <a href="#equipos" class="hover:text-amber-400 transition-colors">Equipos</a>
+      <a href="#especificaciones" class="hover:text-amber-400 transition-colors">Especificaciones</a>
+      <a href="#nosotros" class="hover:text-amber-400 transition-colors">Nosotros</a>
+      <a href="#contacto" class="hover:text-amber-400 transition-colors">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn-amber !h-10 !px-5 !text-[12px]">Cotizar equipo</a>
+  </div>
+</header>
+
+<!-- HERO CON ESTADÍSTICAS -->
+<section class="relative bg-steel-950 pt-[68px] overflow-hidden">
+  <div class="absolute inset-0 opacity-25">
+    <img src="https://images.unsplash.com/photo-1545262810-77515befe149?auto=format&fit=crop&w=1600&q=60" class="w-full h-full object-cover" alt="">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-steel-950/60 via-steel-950/85 to-steel-950"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-10 md:pt-24 md:pb-14">
+    <p class="text-amber-400 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Ingeniería para estaciones de servicio</p>
+    <h1 class="font-display text-[2.3rem] leading-[1.08] sm:text-5xl md:text-[3.4rem] text-fog-50 max-w-3xl uppercase">
+      Equipamos gasolineras que no pueden fallar
+    </h1>
+    <p class="mt-6 max-w-xl text-fog-50/70 text-lg">
+      Dispensarios, tanques de almacenamiento, sistemas de medición y seguridad, con instalación y soporte técnico especializado en todo México.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a href="#contacto" class="btn-amber">Solicitar cotización</a>
+      <a href="#equipos" class="btn-line">Ver equipos</a>
+    </div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+    <div class="stat-strip grid grid-cols-2 md:grid-cols-4">
+      <div class="py-8 px-5 text-center md:text-left">
+        <p class="font-display text-3xl text-fog-50">18</p>
+        <p class="text-xs text-fog-50/50 uppercase tracking-wide mt-1">Años de experiencia</p>
+      </div>
+      <div class="py-8 px-5 text-center md:text-left">
+        <p class="font-display text-3xl text-fog-50">120+</p>
+        <p class="text-xs text-fog-50/50 uppercase tracking-wide mt-1">Estaciones equipadas</p>
+      </div>
+      <div class="py-8 px-5 text-center md:text-left">
+        <p class="font-display text-3xl text-fog-50">24/7</p>
+        <p class="text-xs text-fog-50/50 uppercase tracking-wide mt-1">Soporte técnico</p>
+      </div>
+      <div class="py-8 px-5 text-center md:text-left">
+        <p class="font-display text-3xl text-fog-50">15</p>
+        <p class="text-xs text-fog-50/50 uppercase tracking-wide mt-1">Estados atendidos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPOS: PESTAÑAS -->
+<section id="equipos" class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20">
+  <p class="text-petrol-500 text-xs font-bold tracking-[0.2em] uppercase mb-2">Catálogo</p>
+  <h2 class="font-display text-3xl md:text-4xl uppercase text-steel-950 mb-8">Equipo por categoría</h2>
+
+  <div class="flex gap-1 overflow-x-auto border-b border-steel-700/15 mb-8" id="tabButtons">
+    <button class="tab-btn is-active" data-tab="dispensarios">Dispensarios</button>
+    <button class="tab-btn" data-tab="tanques">Tanques de almacenamiento</button>
+    <button class="tab-btn" data-tab="medicion">Sistemas de medición</button>
+    <button class="tab-btn" data-tab="seguridad">Equipo de seguridad</button>
+  </div>
+
+  <div id="tabPanels">
+    <div class="tab-panel is-active grid md:grid-cols-2 gap-10 items-center" data-panel="dispensarios">
+      <div class="rounded-lg overflow-hidden aspect-[4/3]">
+        <img src="https://images.unsplash.com/photo-1545262810-77515befe149?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Dispensarios de combustible">
+      </div>
+      <div>
+        <h3 class="font-display text-2xl text-steel-950 uppercase mb-3">Dispensarios de combustible</h3>
+        <p class="text-steel-700 mb-5">Islas de despacho con medición de alta precisión, para gasolina, diésel y combinaciones de producto, compatibles con sistemas de pago integrados.</p>
+        <ul class="space-y-2 text-sm text-steel-700">
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Hasta 4 mangueras por dispensario</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Precisión de medición certificada</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Integración con sistemas de punto de venta</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel grid md:grid-cols-2 gap-10 items-center" data-panel="tanques">
+      <div class="rounded-lg overflow-hidden aspect-[4/3]">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Tanques de almacenamiento">
+      </div>
+      <div>
+        <h3 class="font-display text-2xl text-steel-950 uppercase mb-3">Tanques de almacenamiento</h3>
+        <p class="text-steel-700 mb-5">Tanques de doble pared con monitoreo de fugas e inventario en tiempo real, fabricados bajo normativa vigente para almacenamiento de combustibles.</p>
+        <ul class="space-y-2 text-sm text-steel-700">
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Capacidades de 10,000 a 50,000 litros</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Doble pared con detección de fugas</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Monitoreo remoto de inventario</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel grid md:grid-cols-2 gap-10 items-center" data-panel="medicion">
+      <div class="rounded-lg overflow-hidden aspect-[4/3]">
+        <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c1e2d1?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Sistemas de medición">
+      </div>
+      <div>
+        <h3 class="font-display text-2xl text-steel-950 uppercase mb-3">Sistemas de medición</h3>
+        <p class="text-steel-700 mb-5">Consolas de control y medición electrónica que cumplen con la normatividad de PROFECO, con reportes automáticos y trazabilidad de cada venta.</p>
+        <ul class="space-y-2 text-sm text-steel-700">
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Cumplimiento normativo PROFECO</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Reportes automáticos de venta</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Calibración y verificación periódica</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel grid md:grid-cols-2 gap-10 items-center" data-panel="seguridad">
+      <div class="rounded-lg overflow-hidden aspect-[4/3]">
+        <img src="https://images.unsplash.com/photo-1581093458791-4d9e2c53a0d2?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Equipo de seguridad industrial">
+      </div>
+      <div>
+        <h3 class="font-display text-2xl text-steel-950 uppercase mb-3">Equipo de seguridad</h3>
+        <p class="text-steel-700 mb-5">Sistemas contra incendio, detección de gases y paros de emergencia diseñados específicamente para el manejo seguro de combustibles.</p>
+        <ul class="space-y-2 text-sm text-steel-700">
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Sistemas de detección de gases</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Paros de emergencia por isla</li>
+          <li class="flex gap-2"><span class="text-petrol-500">—</span> Señalización y equipo contra incendio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLA DE ESPECIFICACIONES -->
+<section id="especificaciones" class="bg-steel-900 py-16 md:py-20">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <p class="text-amber-400 text-xs font-bold tracking-[0.2em] uppercase mb-2">Comparativa técnica</p>
+    <h2 class="font-display text-3xl md:text-4xl uppercase text-fog-50 mb-8">Modelos de dispensario</h2>
+
+    <div class="overflow-x-auto rounded-lg border border-white/10">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Mangueras</th>
+            <th>Precisión</th>
+            <th>Producto</th>
+            <th>Instalación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>GHL Compact 100</td><td>2</td><td>±0.3%</td><td>Gasolina</td><td>5 días hábiles</td></tr>
+          <tr><td>GHL Dual 200</td><td>4</td><td>±0.2%</td><td>Gasolina / Diésel</td><td>7 días hábiles</td></tr>
+          <tr><td>GHL Pro 300</td><td>4</td><td>±0.15%</td><td>Gasolina / Diésel / Premium</td><td>10 días hábiles</td></tr>
+          <tr><td>GHL Industrial 400</td><td>6</td><td>±0.1%</td><td>Multiproducto</td><td>14 días hábiles</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-fog-50/40 text-xs mt-3">* Tiempos de instalación sujetos a inspección previa del sitio.</p>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+  <div class="grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="text-petrol-500 text-xs font-bold tracking-[0.2em] uppercase mb-2">Quiénes somos</p>
+      <h2 class="font-display text-3xl md:text-4xl uppercase text-steel-950 mb-5">18 años equipando estaciones en todo México</h2>
+      <p class="text-steel-700 leading-relaxed mb-4">
+        GHL Gasolineras diseña, instala y da mantenimiento a los sistemas críticos de una estación de servicio: desde el tanque hasta la boquilla. Trabajamos con franquicias y operadores independientes.
+      </p>
+      <p class="text-steel-700 leading-relaxed">
+        Nuestro equipo de ingenieros supervisa cada instalación para garantizar cumplimiento normativo y cero tiempos muertos en tu estación.
+      </p>
+    </div>
+    <div class="rounded-lg overflow-hidden aspect-[4/3]">
+      <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Equipo técnico GHL en instalación">
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section class="max-w-6xl mx-auto px-5 md:px-8 pb-16 md:pb-20">
+  <p class="text-petrol-500 text-xs font-bold tracking-[0.2em] uppercase mb-6 text-center">Cumplimiento y certificaciones</p>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="cert-badge"><span class="cert-icon">📋</span><span class="text-sm font-semibold">NOM-005-SCFI</span></div>
+    <div class="cert-badge"><span class="cert-icon">⚖️</span><span class="text-sm font-semibold">Verificación PROFECO</span></div>
+    <div class="cert-badge"><span class="cert-icon">🛡️</span><span class="text-sm font-semibold">ISO 9001:2015</span></div>
+    <div class="cert-badge"><span class="cert-icon">🔥</span><span class="text-sm font-semibold">NFPA 30 · Combustibles</span></div>
+  </div>
+</section>
+
+<!-- CONTACTO: FORMULARIO EMPRESARIAL -->
+<section id="contacto" class="bg-steel-950">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20 grid lg:grid-cols-[0.9fr_1.1fr] gap-14">
+    <div>
+      <p class="text-amber-400 text-xs font-bold tracking-[0.2em] uppercase mb-2">Contacto</p>
+      <h2 class="font-display text-3xl md:text-4xl uppercase text-fog-50 mb-5">
+        Solicita una cotización para tu estación
+      </h2>
+      <p class="text-fog-50/60 mb-8 max-w-md">
+        Cuéntanos el tipo de proyecto (instalación nueva, ampliación o mantenimiento) y un ingeniero de GHL te contacta en menos de 24 horas.
+      </p>
+      <div class="space-y-3 text-sm text-fog-50/80">
+        <p>📞 272 400 8811</p>
+        <p>✉️ ventas@ghlgasolineras.mx</p>
+        <p>📍 Parque Industrial Ixtaczoquitlán, Ver.</p>
+      </div>
+    </div>
+
+    <form id="formContactoGHL" class="space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required name="nombre" type="text" placeholder="Nombre completo" class="field-ghl">
+        <input required name="telefono" type="tel" placeholder="Teléfono" class="field-ghl">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input name="empresa" type="text" placeholder="Nombre de la estación / empresa" class="field-ghl">
+        <input required name="email" type="email" placeholder="Correo electrónico" class="field-ghl">
+      </div>
+      <textarea required name="mensaje" rows="4" placeholder="Cuéntanos tu proyecto: instalación nueva, ampliación o mantenimiento" class="field-ghl"></textarea>
+      <button type="submit" class="btn-amber w-full">Solicitar cotización</button>
+    </form>
+  </div>
+</section>
+
+<footer class="bg-steel-950 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-fog-50/50">
+    <div class="flex items-center gap-2">
+      <span class="ghl-mark scale-75">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 21h9M6 21V9a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v12M15 8l3-3M18 5v4h-4M18 21v-6a2 2 0 0 0-2-2h-1"/></svg>
+      </span>
+      <span>GHL Gasolineras</span>
+    </div>
+    <p>© <span id="anio"></span> Copyright</p>
+    <p class="opacity-60">Sitio realizado por SVO</p>
+  </div>
+</footer>
+
+<div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 items-end"></div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<script>
+  (function () {
+    // Pestañas de equipos
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('is-active'));
+        panels.forEach(p => p.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        document.querySelector('.tab-panel[data-panel="' + btn.dataset.tab + '"]').classList.add('is-active');
+      });
+    });
+
+    // Toasts
+    function mostrarToast(mensaje) {
+      const cont = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-ghl';
+      el.textContent = mensaje;
+      cont.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'all .25s ease';
+        setTimeout(() => el.remove(), 250);
+      }, 2800);
+    }
+
+    // Formulario de contacto
+    const form = document.getElementById('formContactoGHL');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const boton = form.querySelector('button[type="submit"]');
+        const textoOriginal = boton.textContent;
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+        const datos = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+          if (!res.ok) throw new Error('Error al enviar');
+          mostrarToast('Solicitud enviada. Un ingeniero te contactará pronto.');
+          form.reset();
+        } catch (err) {
+          mostrarToast('No se pudo enviar. Intenta de nuevo.');
+        } finally {
+          boton.disabled = false;
+          boton.textContent = textoOriginal;
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1788382742666",
+    "nombre": "Test",
+    "telefono": "111",
+    "email": "a@a.com",
+    "mensaje": "hola",
+    "fecha": "2026-09-02T20:59:02.666Z",
+    "atendido": false
+  },
+  {
+    "id": "1788382427073",
+    "nombre": "Test",
+    "telefono": "111",
+    "email": "a@a.com",
+    "mensaje": "hola",
+    "fecha": "2026-09-02T20:53:47.073Z",
+    "atendido": false
+  }
+]

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sposabella Boutique · Vestidos y accesorios de novia en Orizaba</title>
+<meta name="description" content="Sposabella Boutique: vestidos de novia, accesorios y asesoría personalizada en Orizaba. Agenda tu cita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          blush: { 50:'#FBF4EF', 100:'#F5E4DC', 200:'#EAC9BB' },
+          gold: { 500:'#B08D57', 600:'#96703F' },
+          ink: { 900:'#221F1D' }
+        },
+        fontFamily: {
+          display: ['"Playfair Display"', 'serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FBF4EF; }
+  ::selection { background: #B08D57; color: #fff; }
+
+  .divider-gold {
+    width: 56px; height: 2px;
+    background: #B08D57;
+    margin: 0 auto;
+  }
+
+  .btn-gold {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; padding: 0 32px;
+    border-radius: 999px;
+    background: #B08D57; color: #FBF4EF;
+    font-weight: 600; letter-spacing: .02em;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .btn-gold:hover { background: #96703F; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; padding: 0 32px;
+    border-radius: 999px;
+    border: 1.5px solid #221F1D;
+    color: #221F1D; font-weight: 600; letter-spacing: .02em;
+    transition: background .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover { background: #221F1D; color: #FBF4EF; }
+
+  .highlight-item { text-align: center; padding: 0 12px; }
+  .highlight-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+
+  .gallery-item { border-radius: 4px; overflow: hidden; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .field-sp {
+    width: 100%; height: 48px; padding: 0 16px;
+    border: none; border-bottom: 1.5px solid #221F1D;
+    background: transparent; color: #221F1D; font-size: 14px; outline: none;
+  }
+  .field-sp::placeholder { color: #8A7F76; }
+  textarea.field-sp { height: auto; padding-top: 12px; resize: none; }
+  .field-sp:focus { border-color: #B08D57; }
+
+  .toast-sp {
+    background: #221F1D; color: #FBF4EF; border: 1px solid #B08D57;
+    font-size: 13px; padding: 12px 18px; border-radius: 4px;
+    animation: toastInSp .25s ease;
+  }
+  @keyframes toastInSp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="text-ink-900 font-body antialiased">
+
+<!-- LOGO MÍNIMO (página de aterrizaje: una sola sección, sin menú de navegación) -->
+<div class="pt-8 pb-2 text-center">
+  <p class="font-display text-2xl tracking-wide text-ink-900">Sposabella</p>
+  <p class="text-[10px] uppercase tracking-[0.3em] text-gold-600 mt-0.5">Boutique de Novia · Orizaba</p>
+</div>
+
+<!-- HERO / OFERTA ÚNICA -->
+<section class="relative">
+  <div class="relative max-w-5xl mx-auto px-5 md:px-8 pt-6 pb-14 text-center">
+    <p class="text-gold-600 text-xs tracking-[0.25em] uppercase mb-4">Colección Novia 2026</p>
+    <h1 class="font-display text-[2.3rem] leading-[1.15] sm:text-5xl md:text-6xl text-ink-900">
+      El vestido con el que
+      <span class="italic text-gold-600">siempre soñaste</span>
+    </h1>
+    <p class="mt-6 max-w-lg mx-auto text-ink-900/70 text-lg">
+      Vestidos de novia, damas y accesorios, con asesoría personalizada para que encuentres el que es para ti.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <a href="#agenda" class="btn-gold">Agenda tu cita</a>
+      <a href="#coleccion" class="btn-ghost">Ver colección</a>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-5 md:px-8">
+    <div class="rounded-sm overflow-hidden aspect-[16/8]">
+      <img src="https://images.unsplash.com/photo-1594552072238-b8a33785b261?auto=format&fit=crop&w=1600&q=80" alt="Vestido de novia Sposabella Boutique" class="w-full h-full object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS EN LÍNEA -->
+<section class="max-w-4xl mx-auto px-5 md:px-8 py-16">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+    <div class="highlight-item">
+      <span class="highlight-icon">👗</span>
+      <p class="text-ink-900 font-medium text-sm">Diseños exclusivos</p>
+      <p class="text-ink-900/60 text-xs mt-1">Piezas seleccionadas, pocas unidades por modelo.</p>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-icon">✂️</span>
+      <p class="text-ink-900 font-medium text-sm">Asesoría personalizada</p>
+      <p class="text-ink-900/60 text-xs mt-1">Cita privada para encontrar tu vestido ideal.</p>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-icon">💍</span>
+      <p class="text-ink-900 font-medium text-sm">Accesorios a juego</p>
+      <p class="text-ink-900/60 text-xs mt-1">Velos, tocados y joyería para completar el look.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="coleccion" class="max-w-5xl mx-auto px-5 md:px-8 pb-16">
+  <div class="text-center mb-8">
+    <div class="divider-gold mb-4"></div>
+    <p class="font-display text-2xl text-ink-900">Un vistazo a la colección</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="gallery-item aspect-[3/4]"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=500&q=80" alt="Vestido de novia estilo sirena"></div>
+    <div class="gallery-item aspect-[3/4]"><img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=500&q=80" alt="Vestido de novia con encaje"></div>
+    <div class="gallery-item aspect-[3/4]"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80" alt="Accesorios y velo de novia"></div>
+    <div class="gallery-item aspect-[3/4]"><img src="https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?auto=format&fit=crop&w=500&q=80" alt="Vestido de novia con escote corazón"></div>
+  </div>
+</section>
+
+<!-- AGENDA / CONTACTO (única acción de la página) -->
+<section id="agenda" class="bg-ink-900">
+  <div class="max-w-2xl mx-auto px-5 md:px-8 py-20 text-center">
+    <p class="text-gold-500 text-xs tracking-[0.25em] uppercase mb-4">Agenda tu cita</p>
+    <h2 class="font-display text-3xl md:text-4xl text-blush-50 mb-4">
+      Ven a probarte tu vestido
+    </h2>
+    <p class="text-blush-50/70 mb-10 max-w-md mx-auto">
+      Las citas son privadas y sin costo. Cuéntanos la fecha de tu evento y te esperamos con una copa de bienvenida.
+    </p>
+
+    <form id="formContactoSP" class="text-left space-y-5 mb-10">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <input required name="nombre" type="text" placeholder="Nombre" class="field-sp !text-blush-50 !border-blush-50/30">
+        <input required name="telefono" type="tel" placeholder="Teléfono" class="field-sp !text-blush-50 !border-blush-50/30">
+      </div>
+      <input required name="email" type="email" placeholder="Correo electrónico" class="field-sp !text-blush-50 !border-blush-50/30">
+      <textarea required name="mensaje" rows="3" placeholder="Fecha de tu evento y qué buscas" class="field-sp !text-blush-50 !border-blush-50/30"></textarea>
+      <button type="submit" class="btn-gold w-full">Enviar solicitud de cita</button>
+    </form>
+
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-blush-50/80">
+      <a href="https://wa.me/522721234567" target="_blank" class="hover:text-gold-500 transition-colors">WhatsApp</a>
+      <a href="https://instagram.com" target="_blank" class="hover:text-gold-500 transition-colors">Instagram</a>
+      <a href="https://facebook.com" target="_blank" class="hover:text-gold-500 transition-colors">Facebook</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Reforma+Sur+118+Orizaba+Veracruz" target="_blank" class="hover:text-gold-500 transition-colors">Ver ubicación</a>
+    </div>
+  </div>
+</section>
+
+<footer class="py-6 text-center text-[11px] text-ink-900/40">
+  <p>© <span id="anio"></span> Sposabella Boutique — Reforma Sur 118, Orizaba, Ver. · Sitio realizado por SVO</p>
+</footer>
+
+<div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 items-end"></div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<script>
+  (function () {
+    function mostrarToast(mensaje) {
+      const cont = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-sp';
+      el.textContent = mensaje;
+      cont.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'all .25s ease';
+        setTimeout(() => el.remove(), 250);
+      }, 2800);
+    }
+
+    const form = document.getElementById('formContactoSP');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const boton = form.querySelector('button[type="submit"]');
+        const textoOriginal = boton.textContent;
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+        const datos = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+          if (!res.ok) throw new Error('Error al enviar');
+          mostrarToast('Solicitud enviada. Te contactaremos pronto.');
+          form.reset();
+        } catch (err) {
+          mostrarToast('No se pudo enviar. Intenta de nuevo.');
+        } finally {
+          boton.disabled = false;
+          boton.textContent = textoOriginal;
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+[
+  { "id": "1", "nombre": "Ferretería Hernández", "categoria": "Aterrizaje", "rubro": "Herramienta y materiales de construcción", "acento": "brand", "url": "/portafolio/ferreteria-hernandez" },
+  { "id": "2", "nombre": "PROSAN Comedores", "categoria": "Empresarial", "rubro": "Servicios industriales", "acento": "cyan", "url": "/portafolio/prosan-comedores" },
+  { "id": "3", "nombre": "GHL Gasolineras", "categoria": "Empresarial", "rubro": "Equipos para estaciones de servicio", "acento": "navy", "url": "/portafolio/ghl-gasolineras" },
+  { "id": "4", "nombre": "BioAvanza Salud", "categoria": "Empresarial", "rubro": "Suplementos y bienestar", "acento": "cyan", "url": "/portafolio/bioavanza-salud" },
+  { "id": "5", "nombre": "Sposabella Boutique", "categoria": "Aterrizaje", "rubro": "Vestidos y accesorios de novia", "acento": "brand", "url": "/portafolio/sposabella-boutique" },
+  { "id": "6", "nombre": "BoneFix Ferretería", "categoria": "Empresarial", "rubro": "Materiales y herramientas", "acento": "navy", "url": "/portafolio/bonefix-ferreteria" }
+]

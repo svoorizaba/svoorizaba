@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de administración · SVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { navy: { 950:'#050B18', 900:'#0A1730', 800:'#10203F' }, brand: { 600:'#1857A4', 500:'#2B7DD1', 400:'#4FA3E3' }, cyan: { 400:'#35D9CB' }, live: { 500:'#FF3B3B' } },
+    fontFamily: { display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+  } } }
+</script>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-shell text-slate-100 font-body antialiased">
+
+<header class="border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="/img/logo.png" alt="SVO" class="h-9 w-auto brand-logo">
+      <span class="font-display font-600 text-white">Panel de administración</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/" class="text-sm text-slate-400 hover:text-white transition-colors">Ver sitio</a>
+      <form method="POST" action="/admin/logout">
+        <button class="h-9 px-4 rounded-lg glass-btn text-sm">Cerrar sesión</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-5 md:px-8 py-10 space-y-14">
+
+  <!-- MENSAJES / LEADS -->
+  <section>
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="font-display text-xl font-600 text-white">Mensajes de contacto</h2>
+      <span class="text-xs text-slate-500"><%= mensajes.length %> en total</span>
+    </div>
+    <div class="admin-card overflow-x-auto">
+      <table class="w-full admin-table">
+        <thead>
+          <tr><th>Fecha</th><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Mensaje</th><th>Estado</th><th></th></tr>
+        </thead>
+        <tbody>
+          <% if (mensajes.length === 0) { %>
+            <tr><td colspan="7" class="text-slate-500 text-center py-8">Aún no hay mensajes.</td></tr>
+          <% } %>
+          <% mensajes.forEach(function(m){ %>
+            <tr>
+              <td class="whitespace-nowrap text-slate-400"><%= new Date(m.fecha).toLocaleString('es-MX') %></td>
+              <td><%= m.nombre %></td>
+              <td><%= m.telefono %></td>
+              <td><%= m.email %></td>
+              <td class="max-w-xs truncate" title="<%= m.mensaje %>"><%= m.mensaje %></td>
+              <td>
+                <form method="POST" action="/admin/mensajes/<%= m.id %>/atendido">
+                  <button class="text-xs px-2.5 py-1 rounded-full <%= m.atendido ? 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/30' : 'bg-white/5 text-slate-400 border border-white/10' %>">
+                    <%= m.atendido ? 'Atendido' : 'Pendiente' %>
+                  </button>
+                </form>
+              </td>
+              <td>
+                <form method="POST" action="/admin/mensajes/<%= m.id %>/eliminar" onsubmit="return confirm('¿Eliminar este mensaje?')">
+                  <button class="text-xs text-live-500 hover:underline">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section>
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="font-display text-xl font-600 text-white">Planes y precios</h2>
+      <span class="text-xs text-slate-500"><%= planes.length %> planes</span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 mb-8">
+      <% planes.forEach(function(p){ %>
+        <div class="admin-card p-5">
+          <div class="flex items-start justify-between mb-2">
+            <p class="text-white font-medium"><%= p.nombre %></p>
+            <% if (p.destacado) { %><span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-400/15 text-cyan-300 border border-cyan-400/30">Destacado</span><% } %>
+          </div>
+          <p class="text-2xl font-display font-700 text-white mb-1">$<%= p.precio.toLocaleString('es-MX') %></p>
+          <p class="text-slate-500 text-xs mb-4"><%= p.caracteristicas.length %> características</p>
+
+          <details>
+            <summary class="cursor-pointer text-sm text-brand-400 hover:text-brand-300">Editar</summary>
+            <form method="POST" action="/admin/planes/<%= p.id %>" class="mt-4 space-y-3">
+              <input required name="nombre" value="<%= p.nombre %>" class="field" placeholder="Nombre del plan">
+              <input required name="precio" type="number" value="<%= p.precio %>" class="field" placeholder="Precio">
+              <textarea required name="descripcion" rows="2" class="field resize-none" placeholder="Descripción corta"><%= p.descripcion %></textarea>
+              <textarea required name="caracteristicas" rows="6" class="field resize-none" placeholder="Una característica por línea"><%= p.caracteristicas.join('\n') %></textarea>
+              <label class="flex items-center gap-2 text-xs text-slate-400">
+                <input type="checkbox" name="destacado" <%= p.destacado ? 'checked' : '' %>> Marcar como plan destacado
+              </label>
+              <div class="flex gap-2 pt-1">
+                <button type="submit" class="flex-1 h-10 rounded-lg bg-gradient-to-r from-brand-600 to-cyan-400 text-navy-950 text-sm font-semibold">Guardar</button>
+              </div>
+            </form>
+            <form method="POST" action="/admin/planes/<%= p.id %>/eliminar" class="mt-2" onsubmit="return confirm('¿Eliminar este plan?')">
+              <button class="text-xs text-live-500 hover:underline">Eliminar plan</button>
+            </form>
+          </details>
+        </div>
+      <% }) %>
+    </div>
+
+    <div class="admin-card p-6">
+      <p class="text-white font-medium mb-4">Agregar nuevo plan</p>
+      <form method="POST" action="/admin/planes" class="grid md:grid-cols-2 gap-4">
+        <input required name="nombre" class="field" placeholder="Nombre del plan">
+        <input required name="precio" type="number" class="field" placeholder="Precio en MXN">
+        <textarea required name="descripcion" rows="2" class="field resize-none md:col-span-2" placeholder="Descripción corta"></textarea>
+        <textarea required name="caracteristicas" rows="5" class="field resize-none md:col-span-2" placeholder="Una característica por línea"></textarea>
+        <label class="flex items-center gap-2 text-xs text-slate-400 md:col-span-2">
+          <input type="checkbox" name="destacado"> Marcar como plan destacado
+        </label>
+        <button type="submit" class="md:col-span-2 h-11 rounded-xl bg-gradient-to-r from-brand-600 to-cyan-400 text-navy-950 font-semibold">
+          Crear plan
+        </button>
+      </form>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

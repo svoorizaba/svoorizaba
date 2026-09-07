@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoneFix Ferretería · Materiales y herramientas que aguantan</title>
+<meta name="description" content="BoneFix Ferretería: herramientas, materiales de construcción y equipo para tu obra. Ofertas de la semana y entrega rápida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bx: { 950:'#0E0F0C', 900:'#171812', 700:'#4A4C42' },
+          lime: { 400:'#C6FF3D', 500:'#AEE81B', 600:'#8FC212' },
+          paper: { 50:'#FCFDF8' }
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FCFDF8; }
+  ::selection { background: #C6FF3D; color: #0E0F0C; }
+
+  .bx-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: #0E0F0C;
+    position: relative;
+  }
+  .bx-mark svg { width: 22px; height: 22px; }
+
+  .btn-lime {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; padding: 0 28px;
+    border-radius: 8px;
+    background: #C6FF3D; color: #0E0F0C; font-weight: 800; font-size: 14px;
+    border: 2px solid #0E0F0C;
+    box-shadow: 4px 4px 0 #0E0F0C;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-lime:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #0E0F0C; }
+
+  .btn-dark {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; padding: 0 28px;
+    border-radius: 8px;
+    background: #0E0F0C; color: #FCFDF8; font-weight: 800; font-size: 14px;
+    border: 2px solid #0E0F0C;
+    transition: background .2s ease;
+  }
+  .btn-dark:hover { background: #2A2C22; }
+
+  .highlight-word {
+    background: #C6FF3D;
+    padding: 0 10px;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+
+  /* ---------- Tablero de departamentos ---------- */
+  .board { display: grid; grid-template-columns: repeat(2, 1fr); border: 3px solid #0E0F0C; }
+  @media (min-width: 768px) { .board { grid-template-columns: repeat(3, 1fr); } }
+  .board-tile {
+    padding: 26px 20px;
+    border: 1.5px solid #0E0F0C;
+    transition: transform .15s ease;
+  }
+  .board-tile:hover { transform: scale(1.03); position: relative; z-index: 5; }
+  .board-tile.is-dark { background: #0E0F0C; color: #FCFDF8; }
+  .board-tile.is-light { background: #FCFDF8; color: #0E0F0C; }
+  .board-num { font-family: 'Anton', sans-serif; font-size: 13px; opacity: .5; }
+
+  /* ---------- Ofertas con listón ---------- */
+  .offer-card {
+    position: relative;
+    background: #FCFDF8;
+    border: 2.5px solid #0E0F0C;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .offer-ribbon {
+    position: absolute; top: 14px; right: -34px;
+    background: #0E0F0C; color: #C6FF3D;
+    font-size: 10.5px; font-weight: 800; letter-spacing: .05em;
+    padding: 4px 40px;
+    transform: rotate(45deg);
+    z-index: 10;
+  }
+  .offer-img { width: 100%; height: 140px; object-fit: cover; border-bottom: 2.5px solid #0E0F0C; }
+  .offer-price-old { text-decoration: line-through; color: #8A8D7F; font-size: 13px; }
+  .offer-price-new { font-family: 'Anton', sans-serif; font-size: 22px; color: #0E0F0C; }
+
+  /* ---------- Flujo de pasos ---------- */
+  .flow-row { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .flow-step {
+    display: flex; align-items: center; gap: 10px;
+    background: #FCFDF8; border: 2px solid #0E0F0C; border-radius: 999px;
+    padding: 10px 20px 10px 10px;
+  }
+  .flow-step .num {
+    width: 28px; height: 28px; border-radius: 999px;
+    background: #C6FF3D; color: #0E0F0C;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 13px;
+  }
+  .flow-arrow { font-size: 20px; color: #0E0F0C; opacity: .4; }
+
+  /* ---------- Testimonios en abanico ---------- */
+  .fan-wrap { position: relative; min-height: 300px; }
+  .fan-card {
+    position: absolute; top: 0; width: min(90%, 380px);
+    background: #FCFDF8; border: 2.5px solid #0E0F0C; border-radius: 14px;
+    padding: 26px; box-shadow: 6px 6px 0 rgba(14,15,12,0.15);
+  }
+  .fan-card.c1 { left: 50%; transform: translateX(-50%) rotate(-6deg); z-index: 1; }
+  .fan-card.c2 { left: 50%; transform: translateX(-50%) rotate(2deg); z-index: 2; margin-top: 14px; }
+  .fan-card.c3 { left: 50%; transform: translateX(-50%) rotate(-2deg); z-index: 3; margin-top: 28px; background: #0E0F0C; color: #FCFDF8; }
+  @media (min-width: 640px) {
+    .fan-card.c1 { left: 8%; transform: rotate(-6deg); margin-top: 30px; }
+    .fan-card.c2 { left: 50%; transform: translateX(-50%) rotate(2deg); margin-top: 0; }
+    .fan-card.c3 { left: auto; right: 8%; transform: rotate(4deg); margin-top: 30px; }
+  }
+
+  .field-bx {
+    width: 100%; height: 48px; padding: 0 14px;
+    border-radius: 8px; border: 2px solid #0E0F0C;
+    background: #FCFDF8; color: #0E0F0C; font-size: 14px; outline: none;
+  }
+  .field-bx::placeholder { color: #8A8D7F; }
+  textarea.field-bx { height: auto; padding-top: 12px; resize: none; }
+
+  .toast-bx {
+    background: #0E0F0C; color: #C6FF3D; border: 2px solid #C6FF3D;
+    font-size: 13px; padding: 12px 16px; border-radius: 8px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    animation: toastInBx .25s ease;
+  }
+  @keyframes toastInBx { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="text-bx-950 font-body antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-paper-50/95 backdrop-blur border-b-[3px] border-bx-950">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[70px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="bx-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.66 5.66l-6 6a1.5 1.5 0 0 0 2.12 2.12l6-6a4 4 0 0 0 5.66-5.66l-2.3 2.3-2.12-2.12 2.3-2.3Z"/></svg>
+      </span>
+      <span class="font-display leading-tight">
+        <span class="block text-[17px] tracking-tight text-bx-950">BONEFIX</span>
+        <span class="block text-[9px] uppercase tracking-[0.22em] text-bx-700 font-body font-semibold -mt-1">Ferretería · Orizaba</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-bx-900">
+      <a href="#departamentos" class="hover:text-lime-600 transition-colors">Departamentos</a>
+      <a href="#ofertas" class="hover:text-lime-600 transition-colors">Ofertas</a>
+      <a href="#contacto" class="hover:text-lime-600 transition-colors">Contacto</a>
+    </nav>
+    <a href="https://wa.me/522725559090" target="_blank" class="btn-lime !h-11 !px-5 !text-[13px]">WhatsApp</a>
+  </div>
+</header>
+
+<!-- HERO PÓSTER -->
+<section class="max-w-7xl mx-auto px-5 md:px-8 pt-14 pb-16 md:pt-20 md:pb-20">
+  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+    <div>
+      <h1 class="font-display text-[3rem] leading-[0.95] sm:text-[4rem] md:text-[5rem] text-bx-950 uppercase">
+        Materiales que
+        <span class="highlight-word">aguantan</span>
+        todo
+      </h1>
+      <p class="mt-6 max-w-md text-bx-700 text-lg font-medium">
+        Herramienta, tornillería, materiales eléctricos y de construcción. Precio justo, stock real y gente que sabe de obra.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#ofertas" class="btn-lime">Ver ofertas de la semana</a>
+        <a href="#contacto" class="btn-dark">Cotizar mi lista</a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <span class="text-xs font-semibold border-2 border-bx-950 rounded-full px-4 py-1.5">🔧 5,000+ productos</span>
+        <span class="text-xs font-semibold border-2 border-bx-950 rounded-full px-4 py-1.5">🚚 Entrega en 24h</span>
+        <span class="text-xs font-semibold border-2 border-bx-950 rounded-full px-4 py-1.5">📦 Mayoreo a obra</span>
+      </div>
+    </div>
+
+    <div class="relative hidden lg:block">
+      <div class="absolute -top-3 -left-3 w-full h-full border-[3px] border-bx-950 rounded-2xl"></div>
+      <div class="relative rounded-2xl overflow-hidden border-[3px] border-bx-950 aspect-[4/5]">
+        <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Herramientas y equipo de seguridad BoneFix">
+      </div>
+      <div class="absolute -bottom-5 -right-5 bg-lime-400 border-[3px] border-bx-950 rounded-xl px-5 py-3 rotate-3">
+        <p class="font-display text-2xl leading-none">20%</p>
+        <p class="text-[10px] font-bold uppercase tracking-wide">Dto. en herramienta</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTAMENTOS: TABLERO -->
+<section id="departamentos" class="max-w-7xl mx-auto px-5 md:px-8 pb-16 md:pb-20">
+  <div class="mb-8">
+    <p class="text-lime-600 text-xs tracking-wide font-extrabold uppercase mb-2">Departamentos</p>
+    <h2 class="font-display text-3xl md:text-4xl uppercase text-bx-950">Recorre la tienda</h2>
+  </div>
+
+  <div class="board">
+    <div class="board-tile is-light">
+      <p class="board-num">01</p>
+      <p class="text-2xl mt-1">🔧</p>
+      <p class="font-bold mt-2">Herramienta</p>
+      <p class="text-sm opacity-70">Manual y eléctrica</p>
+    </div>
+    <div class="board-tile is-dark">
+      <p class="board-num">02</p>
+      <p class="text-2xl mt-1">🧱</p>
+      <p class="font-bold mt-2">Construcción</p>
+      <p class="text-sm opacity-70">Cemento, block, varilla</p>
+    </div>
+    <div class="board-tile is-light">
+      <p class="board-num">03</p>
+      <p class="text-2xl mt-1">💡</p>
+      <p class="font-bold mt-2">Eléctrico</p>
+      <p class="text-sm opacity-70">Cable, contactos, lámparas</p>
+    </div>
+    <div class="board-tile is-dark">
+      <p class="board-num">04</p>
+      <p class="text-2xl mt-1">🚿</p>
+      <p class="font-bold mt-2">Plomería</p>
+      <p class="text-sm opacity-70">PVC, cobre, bombas</p>
+    </div>
+    <div class="board-tile is-light">
+      <p class="board-num">05</p>
+      <p class="text-2xl mt-1">🔩</p>
+      <p class="font-bold mt-2">Tornillería</p>
+      <p class="text-sm opacity-70">Fijación y anclaje</p>
+    </div>
+    <div class="board-tile is-dark">
+      <p class="board-num">06</p>
+      <p class="text-2xl mt-1">🦺</p>
+      <p class="font-bold mt-2">Seguridad</p>
+      <p class="text-sm opacity-70">Equipo de protección</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTAS -->
+<section id="ofertas" class="bg-bx-950 py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <p class="text-lime-400 text-xs tracking-wide font-extrabold uppercase mb-2">Esta semana</p>
+        <h2 class="font-display text-3xl md:text-4xl uppercase text-paper-50">Ofertas activas</h2>
+      </div>
+      <p class="text-paper-50/60 text-sm max-w-sm">Precios válidos en tienda mientras dure el stock. Pregunta por WhatsApp antes de venir.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="offer-card">
+        <span class="offer-ribbon">-20%</span>
+        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=80" alt="Taladro percutor" class="offer-img">
+        <div class="p-4">
+          <p class="font-bold text-sm">Taladro percutor 1/2"</p>
+          <p class="text-xs text-bx-700 mt-1">Con maletín y broca</p>
+          <p class="mt-3"><span class="offer-price-old">$1,199</span> <span class="offer-price-new">$959</span></p>
+        </div>
+      </div>
+      <div class="offer-card">
+        <span class="offer-ribbon">-15%</span>
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=80" alt="Cable eléctrico" class="offer-img">
+        <div class="p-4">
+          <p class="font-bold text-sm">Cable THW cal. 12 (100m)</p>
+          <p class="text-xs text-bx-700 mt-1">Certificado, uso residencial</p>
+          <p class="mt-3"><span class="offer-price-old">$1,050</span> <span class="offer-price-new">$892</span></p>
+        </div>
+      </div>
+      <div class="offer-card">
+        <span class="offer-ribbon">-10%</span>
+        <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=500&q=80" alt="Pintura vinílica" class="offer-img">
+        <div class="p-4">
+          <p class="font-bold text-sm">Pintura vinílica 19L</p>
+          <p class="text-xs text-bx-700 mt-1">+40 colores disponibles</p>
+          <p class="mt-3"><span class="offer-price-old">$899</span> <span class="offer-price-new">$809</span></p>
+        </div>
+      </div>
+      <div class="offer-card">
+        <span class="offer-ribbon">-25%</span>
+        <img src="https://images.unsplash.com/photo-1581147036324-c1c9a4dea6f0?auto=format&fit=crop&w=500&q=80" alt="Kit de llaves" class="offer-img">
+        <div class="p-4">
+          <p class="font-bold text-sm">Kit de llaves 8 pzas</p>
+          <p class="text-xs text-bx-700 mt-1">Acero cromado</p>
+          <p class="mt-3"><span class="offer-price-old">$389</span> <span class="offer-price-new">$292</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO COMPRAR: FLUJO -->
+<section class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-20 text-center">
+  <p class="text-lime-600 text-xs tracking-wide font-extrabold uppercase mb-2">Así de fácil</p>
+  <h2 class="font-display text-3xl md:text-4xl uppercase text-bx-950 mb-10">Cómo comprar</h2>
+
+  <div class="flow-row">
+    <div class="flow-step"><span class="num">1</span> Mándanos tu lista</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="num">2</span> Te cotizamos al momento</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="num">3</span> Pagas como prefieras</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="num">4</span> Recoges o te lo llevamos</div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS EN ABANICO -->
+<section class="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-24">
+  <div class="text-center mb-14">
+    <p class="text-lime-600 text-xs tracking-wide font-extrabold uppercase mb-2">Nos recomiendan</p>
+    <h2 class="font-display text-3xl md:text-4xl uppercase text-bx-950">Clientes BoneFix</h2>
+  </div>
+
+  <div class="fan-wrap">
+    <div class="fan-card c1">
+      <p class="text-sm leading-relaxed mb-4">"Voy casi cada semana por material de obra. Nunca me han fallado con el stock y el precio es justo."</p>
+      <p class="font-bold text-sm">Javier Ortiz</p>
+      <p class="text-xs opacity-60">Maestro de obra</p>
+    </div>
+    <div class="fan-card c2">
+      <p class="text-sm leading-relaxed mb-4">"Las ofertas de la semana están buenas de verdad, no son solo de anuncio. Ya es mi ferretería de cabecera."</p>
+      <p class="font-bold text-sm">Diana Salas</p>
+      <p class="text-xs opacity-60">Remodelación de casas</p>
+    </div>
+    <div class="fan-card c3">
+      <p class="text-sm leading-relaxed mb-4">"Pedí una lista larga por WhatsApp y me la tuvieron lista para recoger en un rato. Muy prácticos."</p>
+      <p class="font-bold text-sm">Toño Reséndiz</p>
+      <p class="text-xs opacity-60">Electricista</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO: BANNER -->
+<section id="contacto" class="bg-lime-400 border-y-[3px] border-bx-950">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20 grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
+    <div>
+      <h2 class="font-display text-3xl md:text-5xl uppercase text-bx-950 leading-[0.95] mb-5">
+        Manda tu lista,<br>te cotizamos hoy
+      </h2>
+      <div class="flex flex-wrap gap-4 mb-8">
+        <a href="https://wa.me/522725559090" target="_blank" class="btn-dark">💬 WhatsApp</a>
+        <a href="tel:+522725559090" class="btn-dark !bg-transparent !text-bx-950">📞 272 555 9090</a>
+      </div>
+      <div class="text-sm font-semibold text-bx-950/80 space-y-1">
+        <p>📍 Blvd. Industrial 340, Orizaba, Ver.</p>
+        <p>🕘 Lun–Sáb 8:00–19:00 · Dom 9:00–14:00</p>
+      </div>
+    </div>
+
+    <form id="formContactoBX" class="bg-paper-50 border-[3px] border-bx-950 rounded-2xl p-6 md:p-7 space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required name="nombre" type="text" placeholder="Nombre" class="field-bx">
+        <input required name="telefono" type="tel" placeholder="Teléfono" class="field-bx">
+      </div>
+      <input required name="email" type="email" placeholder="Correo electrónico" class="field-bx">
+      <textarea required name="mensaje" rows="3" placeholder="Tu lista de materiales o proyecto" class="field-bx"></textarea>
+      <button type="submit" class="btn-dark w-full">Enviar lista</button>
+    </form>
+  </div>
+</section>
+
+<footer class="bg-bx-950 text-paper-50">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+    <div class="flex items-center gap-2">
+      <span class="bx-mark scale-75">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C6FF3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.66 5.66l-6 6a1.5 1.5 0 0 0 2.12 2.12l6-6a4 4 0 0 0 5.66-5.66l-2.3 2.3-2.12-2.12 2.3-2.3Z"/></svg>
+      </span>
+      <span class="opacity-80 font-display tracking-wide">BONEFIX FERRETERÍA</span>
+    </div>
+    <p class="opacity-50">© <span id="anio"></span> Copyright</p>
+    <p class="opacity-30">Sitio realizado por SVO</p>
+  </div>
+</footer>
+
+<div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 items-end"></div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<script>
+  (function () {
+    function mostrarToast(mensaje) {
+      const cont = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-bx';
+      el.textContent = mensaje;
+      cont.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'all .25s ease';
+        setTimeout(() => el.remove(), 250);
+      }, 2800);
+    }
+
+    const form = document.getElementById('formContactoBX');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const boton = form.querySelector('button[type="submit"]');
+        const textoOriginal = boton.textContent;
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+        const datos = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+          if (!res.ok) throw new Error('Error al enviar');
+          mostrarToast('¡Lista enviada! Te contactaremos pronto.');
+          form.reset();
+        } catch (err) {
+          mostrarToast('No se pudo enviar. Intenta de nuevo.');
+        } finally {
+          boton.disabled = false;
+          boton.textContent = textoOriginal;
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

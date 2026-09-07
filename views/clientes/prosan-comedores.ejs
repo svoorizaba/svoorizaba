@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROSAN Comedores · Alimentación industrial con higiene y calidad</title>
+<meta name="description" content="PROSAN Comedores: servicio de comedores industriales, catering de eventos y banquetes empresariales, con nutrición, higiene y calidad garantizadas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: { 700:'#1E5A43', 600:'#2E7D5B', 500:'#3E9A73' },
+          cream: { 50:'#FBF8F1', 100:'#F4EDDD' },
+          coral: { 500:'#F0653E' },
+          ink: { 900:'#22281F' }
+        },
+        fontFamily: {
+          display: ['Quicksand', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FBF8F1; }
+  ::selection { background: #3E9A73; color: #fff; }
+
+  .prosan-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border-radius: 999px;
+    background: #2E7D5B;
+  }
+
+  .btn-forest {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; padding: 0 28px; border-radius: 999px;
+    background: #2E7D5B; color: #FBF8F1; font-weight: 700; font-size: 14px;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .btn-forest:hover { background: #1E5A43; transform: translateY(-1px); }
+
+  .btn-coral {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; padding: 0 28px; border-radius: 999px;
+    background: #F0653E; color: #FBF8F1; font-weight: 700; font-size: 14px;
+    transition: background .2s ease;
+  }
+  .btn-coral:hover { background: #D8532F; }
+
+  .btn-outline-forest {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; padding: 0 28px; border-radius: 999px;
+    border: 1.5px solid #2E7D5B; color: #2E7D5B; font-weight: 700; font-size: 14px;
+    transition: background .2s ease, color .2s ease;
+  }
+  .btn-outline-forest:hover { background: #2E7D5B; color: #FBF8F1; }
+
+  .service-card {
+    background: #fff; border-radius: 18px; padding: 26px;
+    box-shadow: 0 12px 30px -18px rgba(30,90,67,0.35);
+  }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: #E9F3EC; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 14px;
+  }
+
+  /* ---------- Menú semanal ---------- */
+  .menu-week { display: grid; grid-template-columns: repeat(5, 1fr); border-radius: 16px; overflow: hidden; border: 1px solid #E4DCC8; }
+  @media (max-width: 767px) { .menu-week { grid-template-columns: 1fr; } }
+  .menu-day { background: #fff; padding: 20px 16px; border-right: 1px solid #E4DCC8; }
+  .menu-day:last-child { border-right: none; }
+  @media (max-width: 767px) { .menu-day { border-right: none; border-bottom: 1px solid #E4DCC8; } }
+  .menu-day-name { font-family: 'Quicksand', sans-serif; font-weight: 700; color: #2E7D5B; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+  .menu-dish { font-size: 12.5px; color: #4A4438; margin-bottom: 4px; }
+  .menu-dish b { color: #22281F; }
+
+  .value-row { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; }
+  .value-item { text-align: center; max-width: 190px; }
+  .value-icon { font-size: 26px; margin-bottom: 8px; }
+
+  .client-chip {
+    font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15px;
+    color: #7A7362; padding: 8px 4px;
+  }
+
+  .field-pr {
+    width: 100%; height: 46px; padding: 0 14px;
+    border-radius: 10px; border: 1.5px solid #D9D0BC;
+    background: #fff; color: #22281F; font-size: 14px; outline: none;
+  }
+  .field-pr::placeholder { color: #A69F8E; }
+  textarea.field-pr { height: auto; padding-top: 12px; resize: none; }
+  .field-pr:focus { border-color: #2E7D5B; }
+  select.field-pr { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7362' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+
+  .toast-pr {
+    background: #22281F; color: #FBF8F1; border: 1.5px solid #3E9A73;
+    font-size: 13px; padding: 12px 16px; border-radius: 10px;
+    animation: toastInPr .25s ease;
+  }
+  @keyframes toastInPr { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="text-ink-900 font-body antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur border-b border-cream-100">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="prosan-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBF8F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v6M11 2v6M7 8a4 4 0 0 0 4 0M9 8v14M17 2c-2 2-2 5 0 7s2 5 0 7M17 2v18"/></svg>
+      </span>
+      <span class="font-display leading-tight">
+        <span class="block text-[16px] font-700 tracking-tight text-forest-700">PROSAN</span>
+        <span class="block text-[9.5px] uppercase tracking-[0.2em] text-coral-500 font-body font-semibold -mt-0.5">Comedores Industriales</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink-900/70">
+      <a href="#servicios" class="hover:text-forest-600 transition-colors">Servicios</a>
+      <a href="#menu" class="hover:text-forest-600 transition-colors">Menú</a>
+      <a href="#nosotros" class="hover:text-forest-600 transition-colors">Nosotros</a>
+      <a href="#contacto" class="hover:text-forest-600 transition-colors">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn-forest !h-11 !px-5 !text-[13px]">Cotiza tu comedor</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-14 md:pt-20 md:pb-16 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-forest-600/10 text-forest-700 text-xs font-semibold mb-6">
+        🥗 Nutrición, higiene y calidad certificada
+      </div>
+      <h1 class="font-display text-[2.3rem] leading-[1.12] sm:text-5xl md:text-[3.2rem] font-700 text-ink-900">
+        Alimentación que rinde
+        <span class="text-forest-600">tanto como tu equipo</span>
+      </h1>
+      <p class="mt-6 max-w-md text-ink-900/65 text-lg">
+        Comedores industriales, catering de eventos y banquetes empresariales, con menús balanceados diseñados por nutriólogos.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#contacto" class="btn-forest">Cotiza tu comedor</a>
+        <a href="#menu" class="btn-outline-forest">Ver menú semanal</a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-sm text-ink-900/60">
+        <span>✓ +15 años de experiencia</span>
+        <span>✓ 40+ comedores en operación</span>
+        <span>✓ Personal certificado en higiene</span>
+      </div>
+    </div>
+    <div class="rounded-3xl overflow-hidden aspect-[4/3]">
+      <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Comedor industrial PROSAN">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20">
+  <div class="text-center mb-12">
+    <p class="text-coral-500 text-xs tracking-wide font-bold uppercase mb-2">Qué hacemos</p>
+    <h2 class="font-display text-3xl md:text-4xl font-700 text-ink-900">Servicios de alimentación</h2>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="service-card">
+      <div class="service-icon">🏭</div>
+      <p class="font-semibold">Comedores industriales</p>
+      <p class="text-ink-900/60 text-sm mt-1.5">Operación diaria dentro de tu planta, con turnos matutino, vespertino y nocturno.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎉</div>
+      <p class="font-semibold">Catering de eventos</p>
+      <p class="text-ink-900/60 text-sm mt-1.5">Eventos corporativos, aniversarios y celebraciones dentro de tus instalaciones.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <p class="font-semibold">Banquetes empresariales</p>
+      <p class="text-ink-900/60 text-sm mt-1.5">Servicio completo con montaje, meseros y menú a la carta para juntas y consejos.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">☕</div>
+      <p class="font-semibold">Servicio de café y snacks</p>
+      <p class="text-ink-900/60 text-sm mt-1.5">Estaciones de café y colaciones saludables para tus áreas administrativas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENÚ SEMANAL -->
+<section id="menu" class="bg-forest-700 py-16 md:py-20">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="text-center mb-10">
+      <p class="text-cream-100/70 text-xs tracking-wide font-bold uppercase mb-2">Ejemplo real</p>
+      <h2 class="font-display text-3xl md:text-4xl font-700 text-cream-50">Menú de la semana</h2>
+    </div>
+
+    <div class="menu-week">
+      <div class="menu-day">
+        <p class="menu-day-name">Lunes</p>
+        <p class="menu-dish"><b>Desayuno:</b> Chilaquiles verdes</p>
+        <p class="menu-dish"><b>Comida:</b> Pollo a la plancha, arroz y ensalada</p>
+      </div>
+      <div class="menu-day">
+        <p class="menu-day-name">Martes</p>
+        <p class="menu-dish"><b>Desayuno:</b> Huevo a la mexicana</p>
+        <p class="menu-dish"><b>Comida:</b> Milanesa de res, puré y verduras</p>
+      </div>
+      <div class="menu-day">
+        <p class="menu-day-name">Miércoles</p>
+        <p class="menu-dish"><b>Desayuno:</b> Avena con fruta</p>
+        <p class="menu-dish"><b>Comida:</b> Pescado empapelado y arroz</p>
+      </div>
+      <div class="menu-day">
+        <p class="menu-day-name">Jueves</p>
+        <p class="menu-dish"><b>Desayuno:</b> Molletes</p>
+        <p class="menu-dish"><b>Comida:</b> Guisado de res con nopales</p>
+      </div>
+      <div class="menu-day">
+        <p class="menu-day-name">Viernes</p>
+        <p class="menu-dish"><b>Desayuno:</b> Fruta y yogurt</p>
+        <p class="menu-dish"><b>Comida:</b> Enchiladas suizas</p>
+      </div>
+    </div>
+    <p class="text-cream-100/50 text-xs text-center mt-4">Menús diseñados y balanceados por nutriólogos, rotan cada semana.</p>
+  </div>
+</section>
+
+<!-- NOSOTROS: VALORES -->
+<section id="nosotros" class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+  <div class="text-center mb-12">
+    <p class="text-coral-500 text-xs tracking-wide font-bold uppercase mb-2">Nuestro compromiso</p>
+    <h2 class="font-display text-3xl md:text-4xl font-700 text-ink-900">Lo que garantizamos en cada comida</h2>
+  </div>
+  <div class="value-row">
+    <div class="value-item">
+      <p class="value-icon">🎯</p>
+      <p class="font-semibold">Misión</p>
+      <p class="text-ink-900/60 text-sm mt-1">Brindar alimentación de calidad que cuide la salud de tus colaboradores.</p>
+    </div>
+    <div class="value-item">
+      <p class="value-icon">🔭</p>
+      <p class="font-semibold">Visión</p>
+      <p class="text-ink-900/60 text-sm mt-1">Ser el proveedor de comedores industriales de mayor confianza en la región.</p>
+    </div>
+    <div class="value-item">
+      <p class="value-icon">🥦</p>
+      <p class="font-semibold">Nutrición</p>
+      <p class="text-ink-900/60 text-sm mt-1">Menús balanceados diseñados y supervisados por nutriólogos certificados.</p>
+    </div>
+    <div class="value-item">
+      <p class="value-icon">🧑‍🍳</p>
+      <p class="font-semibold">Recursos Humanos</p>
+      <p class="text-ink-900/60 text-sm mt-1">Personal capacitado y certificado en manejo higiénico de alimentos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section class="border-t border-cream-100 py-14">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <p class="text-center text-ink-900/40 text-xs uppercase tracking-[0.2em] mb-6">Empresas que confían en nosotros</p>
+    <div class="flex flex-wrap justify-center gap-x-12 gap-y-3">
+      <span class="client-chip">Grupo Metalúrgico Orizaba</span>
+      <span class="client-chip">Textiles del Valle</span>
+      <span class="client-chip">Industrias Ixtaczoquitlán</span>
+      <span class="client-chip">Envasadora del Golfo</span>
+      <span class="client-chip">Manufacturas San Rafael</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="bg-cream-100">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20 grid lg:grid-cols-[0.9fr_1.1fr] gap-14">
+    <div>
+      <p class="text-coral-500 text-xs tracking-wide font-bold uppercase mb-2">Contacto</p>
+      <h2 class="font-display text-3xl md:text-4xl font-700 text-ink-900 mb-5">Cotiza el comedor de tu planta</h2>
+      <p class="text-ink-900/60 mb-8 max-w-md">
+        Cuéntanos cuántos comensales tienes y en qué turno operas. Te armamos una propuesta de menú y costo por comensal.
+      </p>
+      <div class="space-y-3 text-sm text-ink-900/80">
+        <p>📞 272 311 4470</p>
+        <p>✉️ ventas@prosancomedores.mx</p>
+        <p>📍 Zona Industrial, Orizaba–Ixtaczoquitlán, Ver.</p>
+      </div>
+    </div>
+
+    <form id="formContactoPR" class="bg-white rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required name="nombre" type="text" placeholder="Nombre" class="field-pr">
+        <input required name="telefono" type="tel" placeholder="Teléfono" class="field-pr">
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required name="email" type="email" placeholder="Correo electrónico" class="field-pr">
+        <select name="turno" class="field-pr">
+          <option value="">Turno de operación</option>
+          <option>Matutino</option>
+          <option>Vespertino</option>
+          <option>Nocturno</option>
+          <option>Varios turnos</option>
+        </select>
+      </div>
+      <textarea required name="mensaje" rows="3" placeholder="Número de comensales aproximado y ubicación de la planta" class="field-pr"></textarea>
+      <button type="submit" class="btn-coral w-full">Solicitar cotización</button>
+    </form>
+  </div>
+</section>
+
+<footer class="py-7 text-center text-[11px] text-ink-900/40">
+  <p>© <span id="anio"></span> PROSAN Comedores — Orizaba–Ixtaczoquitlán, Ver. · Sitio realizado por SVO</p>
+</footer>
+
+<div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 items-end"></div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<script>
+  (function () {
+    function mostrarToast(mensaje) {
+      const cont = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-pr';
+      el.textContent = mensaje;
+      cont.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'all .25s ease';
+        setTimeout(() => el.remove(), 250);
+      }, 2800);
+    }
+
+    const form = document.getElementById('formContactoPR');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const boton = form.querySelector('button[type="submit"]');
+        const textoOriginal = boton.textContent;
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+        const datos = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+          if (!res.ok) throw new Error('Error al enviar');
+          mostrarToast('Solicitud enviada. Te contactaremos pronto.');
+          form.reset();
+        } catch (err) {
+          mostrarToast('No se pudo enviar. Intenta de nuevo.');
+        } finally {
+          boton.disabled = false;
+          boton.textContent = textoOriginal;
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

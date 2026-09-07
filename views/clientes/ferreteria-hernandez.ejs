@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferretería Hernández · Todo para tu obra, tu casa y tu negocio</title>
+<meta name="description" content="Ferretería Hernández en Orizaba: herramienta, materiales eléctricos, plomería, pintura y tornillería. Entrega el mismo día y asesoría técnica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: { 950:'#181410', 900:'#221C15', 700:'#4A4238' },
+          cream: { 50:'#FDFBF7', 100:'#FAF6EF', 200:'#F1EADC' },
+          orange: { 600:'#D8500A', 500:'#F2600C', 400:'#FF7E2E' },
+          yellow: { 400:'#FFC42B' }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FAF6EF; }
+  ::selection { background: #F2600C; color: #fff; }
+  ::-webkit-scrollbar { height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #E4DBC9; border-radius: 999px; }
+
+  .hazard-strip {
+    height: 8px;
+    background: repeating-linear-gradient(-45deg, #17140F, #17140F 14px, #FFC42B 14px, #FFC42B 28px);
+  }
+
+  .fh-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: #F2600C;
+    color: #FAF6EF;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  .btn-solid {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 48px; padding: 0 28px;
+    border-radius: 10px;
+    background: #F2600C; color: #FAF6EF; font-weight: 700;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .btn-solid:hover { background: #D8500A; transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 42px; padding: 0 22px;
+    border-radius: 9px;
+    border: 2px solid #17140F; color: #17140F; font-weight: 700; font-size: 13.5px;
+    transition: background .2s ease, color .2s ease;
+  }
+  .btn-outline:hover { background: #17140F; color: #FAF6EF; }
+
+  /* ---------- Hero con buscador ---------- */
+  .hero-fh {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(24,20,16,0.72), rgba(24,20,16,0.85)),
+      url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=70');
+    background-size: cover;
+    background-position: center;
+  }
+  .search-bar-fh {
+    display: flex; align-items: center; gap: 10px;
+    background: #FDFBF7;
+    border-radius: 12px;
+    padding: 6px 6px 6px 18px;
+    box-shadow: 0 20px 40px -18px rgba(0,0,0,0.6);
+  }
+  .search-bar-fh input {
+    flex: 1; height: 44px; border: none; outline: none;
+    background: transparent; font-size: 14px; color: #17140F;
+  }
+  .search-bar-fh input::placeholder { color: #8A8071; }
+
+  /* ---------- Franja de categorías ---------- */
+  .cat-rail { display: flex; gap: 12px; overflow-x: auto; padding: 4px 4px 14px; scrollbar-width: thin; }
+  .cat-pill {
+    flex-shrink: 0;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    width: 108px; padding: 16px 10px;
+    background: #FDFBF7; border: 2px solid #17140F; border-radius: 14px;
+    text-align: center;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .cat-pill:hover { background: #FFEBDB; transform: translateY(-2px); }
+  .cat-pill span.emoji { font-size: 24px; }
+  .cat-pill span.label { font-size: 11.5px; font-weight: 600; color: #17140F; line-height: 1.25; }
+
+  /* ---------- Carrusel de productos ---------- */
+  .prod-rail { display: flex; gap: 18px; overflow-x: auto; padding: 6px 4px 20px; scroll-snap-type: x mandatory; }
+  .prod-card {
+    flex-shrink: 0; scroll-snap-align: start;
+    width: 240px;
+    background: #FDFBF7; border: 2px solid #17140F; border-radius: 14px;
+    padding: 14px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .prod-card:hover { transform: translateY(-3px); box-shadow: 5px 5px 0 #17140F; }
+  .prod-brand {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .04em;
+    padding: 3px 10px; border-radius: 999px;
+    background: #17140F; color: #FFC42B;
+    margin-bottom: 8px;
+  }
+  .prod-img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; border: 2px solid #17140F; }
+  .price-tag {
+    display: inline-block;
+    background: #17140F; color: #FFC42B;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    padding: 3px 10px; border-radius: 6px; font-size: 15px;
+  }
+
+  /* ---------- Zigzag "nosotros" ---------- */
+  .zigzag-row { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 900px) { .zigzag-row { grid-template-columns: 1fr 1fr; gap: 56px; } }
+  .zigzag-img { border-radius: 16px; border: 2px solid #17140F; overflow: hidden; aspect-ratio: 4/3; }
+  .zigzag-img img { width: 100%; height: 100%; object-fit: cover; }
+  .zigzag-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 999px;
+    background: #17140F; color: #FFC42B;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  /* ---------- Marcas ---------- */
+  .brand-ticker { background: #17140F; overflow: hidden; white-space: nowrap; }
+  .brand-ticker-track { display: inline-flex; animation: ticker 24s linear infinite; }
+  .brand-ticker span {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px;
+    color: #FAF6EF; opacity: .55; padding: 0 34px;
+    display: inline-flex; align-items: center;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .brand-ticker-track { animation: none; } }
+
+  /* ---------- Reseñas tipo ficha ---------- */
+  .review-card {
+    background: #FDFBF7; border: 2px solid #17140F; border-radius: 14px;
+    padding: 22px;
+  }
+  .avatar-fh {
+    width: 38px; height: 38px; border-radius: 999px;
+    background: #FFEBDB; color: #D8500A;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px;
+  }
+  .stars { color: #F2600C; letter-spacing: 1px; font-size: 13px; }
+
+  /* ---------- Franja de info práctica ---------- */
+  .info-strip { display: flex; flex-wrap: wrap; gap: 0; border: 2px solid #17140F; border-radius: 14px; overflow: hidden; }
+  .info-strip > div { flex: 1 1 240px; padding: 20px 22px; border-right: 2px solid #17140F; }
+  .info-strip > div:last-child { border-right: none; }
+
+  .field-fh {
+    width: 100%; height: 46px; padding: 0 14px;
+    border-radius: 8px; border: 2px solid #17140F;
+    background: #FDFBF7; color: #17140F; font-size: 14px; outline: none;
+  }
+  .field-fh::placeholder { color: #8A8071; }
+  textarea.field-fh { height: auto; padding-top: 12px; }
+
+  .toast-fh {
+    background: #17140F; color: #FAF6EF; border: 2px solid #F2600C;
+    font-size: 13px; padding: 12px 16px; border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+    animation: toastInFh .25s ease;
+  }
+  @keyframes toastInFh { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="text-ink-950 font-body antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 inset-x-0 z-40 bg-cream-50/90 backdrop-blur border-b-2 border-ink-950">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="fh-mark">FH</span>
+      <span class="font-display leading-tight">
+        <span class="block text-[14px] font-700 tracking-tight text-ink-950">FERRETERÍA HERNÁNDEZ</span>
+        <span class="block text-[10px] uppercase tracking-[0.18em] text-orange-500 -mt-0.5">Orizaba, Veracruz</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-2 text-sm font-medium text-ink-700">
+      <a href="tel:+522725550198" class="px-3 py-1.5 hover:text-orange-500 transition-colors">📞 272 555 0198</a>
+      <span class="text-ink-950/20">|</span>
+      <a href="#contacto" class="px-3 py-1.5 hover:text-orange-500 transition-colors">Ubicación</a>
+    </div>
+    <a href="https://wa.me/522725550198" target="_blank" class="inline-flex h-10 px-5 items-center rounded-lg bg-ink-950 text-cream-50 text-sm font-semibold hover:bg-orange-500 transition-colors">
+      WhatsApp
+    </a>
+  </div>
+</header>
+<div class="hazard-strip mt-[68px]"></div>
+
+<!-- HERO CON BUSCADOR -->
+<section class="hero-fh pt-16 pb-20 md:pt-24 md:pb-28">
+  <div class="max-w-3xl mx-auto px-5 md:px-8 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-400/90 text-[11px] font-bold text-ink-950 mb-6">
+      ⚡ MÁS DE 20 AÑOS SIRVIENDO A ORIZABA
+    </div>
+    <h1 class="font-display text-[2.2rem] leading-[1.1] sm:text-4xl md:text-5xl font-800 text-cream-50">
+      ¿Qué material buscas hoy?
+    </h1>
+    <p class="mt-4 text-cream-100/80 text-base md:text-lg max-w-lg mx-auto">
+      Herramienta, materiales eléctricos, plomería, pintura y tornillería, con entrega el mismo día en Orizaba.
+    </p>
+
+    <form class="search-bar-fh mt-8 max-w-xl mx-auto" onsubmit="event.preventDefault(); document.getElementById('productos').scrollIntoView({behavior:'smooth'});">
+      <span class="text-lg pl-1">🔍</span>
+      <input type="text" placeholder="Ej. taladro, cable calibre 12, pintura vinílica...">
+      <button type="submit" class="btn-solid h-11 px-6 text-sm">Buscar</button>
+    </form>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 text-cream-100/70 text-xs">
+      <span>✓ 6,000+ productos en catálogo</span>
+      <span>✓ Entrega el mismo día</span>
+      <span>✓ Precio de mayoreo a contratistas</span>
+    </div>
+  </div>
+</section>
+
+<!-- FRANJA DE CATEGORÍAS -->
+<section id="categorias" class="max-w-7xl mx-auto px-5 md:px-8 -mt-8 relative z-10">
+  <div class="cat-rail">
+    <div class="cat-pill"><span class="emoji">🔧</span><span class="label">Herramienta manual</span></div>
+    <div class="cat-pill"><span class="emoji">⚡</span><span class="label">Herramienta eléctrica</span></div>
+    <div class="cat-pill"><span class="emoji">💡</span><span class="label">Eléctrico</span></div>
+    <div class="cat-pill"><span class="emoji">🚿</span><span class="label">Plomería</span></div>
+    <div class="cat-pill"><span class="emoji">🎨</span><span class="label">Pintura</span></div>
+    <div class="cat-pill"><span class="emoji">🔩</span><span class="label">Tornillería</span></div>
+    <div class="cat-pill"><span class="emoji">🦺</span><span class="label">Seguridad</span></div>
+    <div class="cat-pill"><span class="emoji">🧱</span><span class="label">Construcción</span></div>
+  </div>
+</section>
+
+<!-- CARRUSEL DE PRODUCTOS -->
+<section id="productos" class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20">
+  <div class="flex items-end justify-between gap-4 mb-6">
+    <div>
+      <p class="text-orange-500 text-xs tracking-wide font-bold uppercase mb-2">Más vendidos</p>
+      <h2 class="font-display text-2xl md:text-3xl font-700 text-ink-950">Productos destacados</h2>
+    </div>
+    <p class="hidden sm:block text-ink-700 text-xs">Desliza para ver más →</p>
+  </div>
+
+  <div class="prod-rail">
+    <div class="prod-card">
+      <span class="prod-brand">TRUPER</span>
+      <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=500&q=80" alt="Taladro rotomartillo" class="prod-img">
+      <p class="text-ink-950 font-semibold text-sm mt-3">Rotomartillo 1/2" 710W</p>
+      <p class="text-ink-700 text-xs mt-1">Incluye maletín y 3 brocas</p>
+      <div class="flex items-center justify-between mt-3">
+        <span class="price-tag">$1,249</span>
+        <a href="https://wa.me/522725550198?text=Hola%2C%20quiero%20preguntar%20por%20el%20Rotomartillo%20Truper%201%2F2%22" target="_blank" class="text-xs font-semibold text-orange-500 hover:underline">Preguntar →</a>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-brand">PRETUL</span>
+      <img src="https://images.unsplash.com/photo-1581147036324-c1c9a4dea6f0?auto=format&fit=crop&w=500&q=80" alt="Juego de llaves" class="prod-img">
+      <p class="text-ink-950 font-semibold text-sm mt-3">Juego de llaves 8 pzas</p>
+      <p class="text-ink-700 text-xs mt-1">Del 8mm al 19mm, cromado</p>
+      <div class="flex items-center justify-between mt-3">
+        <span class="price-tag">$389</span>
+        <a href="https://wa.me/522725550198?text=Hola%2C%20quiero%20preguntar%20por%20el%20juego%20de%20llaves%20Pretul" target="_blank" class="text-xs font-semibold text-orange-500 hover:underline">Preguntar →</a>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-brand">COMEX</span>
+      <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=500&q=80" alt="Cubeta de pintura vinílica" class="prod-img">
+      <p class="text-ink-950 font-semibold text-sm mt-3">Pintura vinílica 19L</p>
+      <p class="text-ink-700 text-xs mt-1">Vinimex, +40 colores en tienda</p>
+      <div class="flex items-center justify-between mt-3">
+        <span class="price-tag">$899</span>
+        <a href="https://wa.me/522725550198?text=Hola%2C%20quiero%20preguntar%20por%20la%20pintura%20vin%C3%ADlica%2019L" target="_blank" class="text-xs font-semibold text-orange-500 hover:underline">Preguntar →</a>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-brand">IUSA</span>
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=80" alt="Rollo de cable eléctrico" class="prod-img">
+      <p class="text-ink-950 font-semibold text-sm mt-3">Cable THW cal. 12 (100m)</p>
+      <p class="text-ink-700 text-xs mt-1">Certificado, uso residencial</p>
+      <div class="flex items-center justify-between mt-3">
+        <span class="price-tag">$1,050</span>
+        <a href="https://wa.me/522725550198?text=Hola%2C%20quiero%20preguntar%20por%20el%20cable%20THW%20calibre%2012" target="_blank" class="text-xs font-semibold text-orange-500 hover:underline">Preguntar →</a>
+      </div>
+    </div>
+    <div class="prod-card">
+      <span class="prod-brand">FIERO</span>
+      <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=500&q=80" alt="Casco y equipo de seguridad" class="prod-img">
+      <p class="text-ink-950 font-semibold text-sm mt-3">Kit de seguridad básico</p>
+      <p class="text-ink-700 text-xs mt-1">Casco, lentes y guantes</p>
+      <div class="flex items-center justify-between mt-3">
+        <span class="price-tag">$295</span>
+        <a href="https://wa.me/522725550198?text=Hola%2C%20quiero%20preguntar%20por%20el%20kit%20de%20seguridad" target="_blank" class="text-xs font-semibold text-orange-500 hover:underline">Preguntar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS -->
+<div class="brand-ticker py-5">
+  <div class="brand-ticker-track">
+    <span>TRUPER</span><span>URREA</span><span>PRETUL</span><span>BOSCH</span><span>DEWALT</span><span>COMEX</span><span>BEREL</span><span>IUSA</span><span>CEMEX</span><span>FIERO</span>
+    <span>TRUPER</span><span>URREA</span><span>PRETUL</span><span>BOSCH</span><span>DEWALT</span><span>COMEX</span><span>BEREL</span><span>IUSA</span><span>CEMEX</span><span>FIERO</span>
+  </div>
+</div>
+
+<!-- NOSOTROS: ZIGZAG -->
+<section id="nosotros" class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24 space-y-20">
+  <div class="zigzag-row">
+    <div class="zigzag-img"><img src="https://images.unsplash.com/photo-1581147036324-c1c9a4dea6f0?auto=format&fit=crop&w=900&q=80" alt="Piso de venta de la ferretería"></div>
+    <div>
+      <span class="zigzag-num">01</span>
+      <h3 class="font-display text-2xl md:text-3xl font-700 text-ink-950 mb-3">Un negocio familiar desde 2004</h3>
+      <p class="text-ink-700 leading-relaxed">Somos una ferretería familiar en Orizaba desde hace más de 20 años. Conocemos a nuestros clientes por su nombre y sus proyectos, y eso se nota en la asesoría que te damos antes de cobrarte un solo peso.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-row">
+    <div class="md:order-2 zigzag-img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80" alt="Entrega de materiales de construcción"></div>
+    <div class="md:order-1">
+      <span class="zigzag-num">02</span>
+      <h3 class="font-display text-2xl md:text-3xl font-700 text-ink-950 mb-3">Entrega el mismo día</h3>
+      <p class="text-ink-700 leading-relaxed">Si nos pides antes de la 1pm, tu material sale ese mismo día a cualquier punto de Orizaba y alrededores. Trabajamos con contratistas que no pueden esperar a que su obra se detenga.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-row">
+    <div class="zigzag-img"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80" alt="Asesoría técnica en ferretería"></div>
+    <div>
+      <span class="zigzag-num">03</span>
+      <h3 class="font-display text-2xl md:text-3xl font-700 text-ink-950 mb-3">Asesoría técnica real</h3>
+      <p class="text-ink-700 leading-relaxed">No solo despachamos, te ayudamos a elegir el material correcto para tu proyecto: la mezcla, el calibre, la herramienta. Precios de mayoreo disponibles para contratistas frecuentes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="testimonios" class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t-2 border-ink-950/10">
+  <div class="text-center mb-10">
+    <p class="text-orange-500 text-xs tracking-wide font-bold uppercase mb-3">Reseñas</p>
+    <h2 class="font-display text-3xl md:text-4xl font-700 text-ink-950">Clientes que confían en nosotros</h2>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="review-card">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="avatar-fh">RC</span>
+        <div>
+          <p class="text-ink-950 font-semibold text-sm">Ing. Ramiro Cortés</p>
+          <p class="stars">★★★★★</p>
+        </div>
+      </div>
+      <p class="text-ink-700 text-sm leading-relaxed">Siempre encuentro lo que necesito y si no lo tienen en el momento, me lo consiguen para el otro día. Se nota que conocen el oficio.</p>
+    </div>
+    <div class="review-card">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="avatar-fh">LD</span>
+        <div>
+          <p class="text-ink-950 font-semibold text-sm">Lucía Domínguez</p>
+          <p class="stars">★★★★★</p>
+        </div>
+      </div>
+      <p class="text-ink-700 text-sm leading-relaxed">Llevo mi negocio de plomería y siempre me surto ahí. Los precios de mayoreo me ayudan mucho y el trato siempre es amable.</p>
+    </div>
+    <div class="review-card">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="avatar-fh">FR</span>
+        <div>
+          <p class="text-ink-950 font-semibold text-sm">Familia Reyes</p>
+          <p class="stars">★★★★★</p>
+        </div>
+      </div>
+      <p class="text-ink-700 text-sm leading-relaxed">Me asesoraron para elegir la pintura correcta para exterior y quedó perfecta. Se toman el tiempo de explicarte, no solo venden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO PRÁCTICA: FRANJA -->
+<section class="max-w-7xl mx-auto px-5 md:px-8 pb-16">
+  <div class="info-strip">
+    <div>
+      <p class="text-ink-950 font-semibold text-sm">🕘 Horario</p>
+      <p class="text-ink-700 text-xs mt-1">Lun–Sáb 8:00–19:00 · Dom 9:00–14:00</p>
+    </div>
+    <div>
+      <p class="text-ink-950 font-semibold text-sm">💳 Formas de pago</p>
+      <p class="text-ink-700 text-xs mt-1">Efectivo, tarjeta, transferencia y crédito</p>
+    </div>
+    <div>
+      <p class="text-ink-950 font-semibold text-sm">🧾 Facturación</p>
+      <p class="text-ink-700 text-xs mt-1">Factura electrónica el mismo día</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO: CENTRADO -->
+<section id="contacto" class="border-t-2 border-ink-950/10 bg-cream-200/60">
+  <div class="max-w-2xl mx-auto px-5 md:px-8 py-20 text-center">
+    <p class="text-orange-500 text-xs tracking-wide font-bold uppercase mb-3">Contacto</p>
+    <h2 class="font-display text-3xl md:text-4xl font-700 text-ink-950 leading-tight mb-4">
+      Cuéntanos qué proyecto traes entre manos
+    </h2>
+    <p class="text-ink-700 mb-10">
+      Escríbenos por WhatsApp o llena el formulario y te cotizamos tu lista de materiales el mismo día.
+    </p>
+
+    <form id="formContactoFH" class="text-left bg-cream-50 border-2 border-ink-950 rounded-2xl p-6 md:p-8 space-y-4 mb-10">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required name="nombre" type="text" placeholder="Nombre" class="field-fh">
+        <input required name="telefono" type="tel" placeholder="Teléfono" class="field-fh">
+      </div>
+      <input required name="email" type="email" placeholder="Correo electrónico" class="field-fh">
+      <textarea required name="mensaje" rows="4" placeholder="Cuéntanos qué materiales necesitas" class="field-fh resize-none"></textarea>
+      <button type="submit" class="btn-solid w-full">Enviar mensaje</button>
+    </form>
+
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-ink-950">
+      <span>📞 272 555 0198</span>
+      <span>✉️ ventas@ferreteriahernandez.mx</span>
+      <span>📍 Av. Colón 214, Centro, Orizaba, Ver.</span>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-ink-950 text-cream-100">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+    <div class="flex items-center gap-2">
+      <span class="fh-mark scale-75">FH</span>
+      <span class="opacity-80">Ferretería Hernández — Orizaba, Veracruz</span>
+    </div>
+    <p class="opacity-60">© <span id="anio"></span> Copyright</p>
+    <p class="opacity-40">Sitio realizado por SVO</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/522725550198" target="_blank" rel="noopener"
+   class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-105 transition-transform border-2 border-ink-950"
+   aria-label="Escríbenos por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7 fill-white"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.8c1.8 1 3.9 1.6 6.3 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3Zm0 22c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.6 1.1 1.1-4.5-.3-.4C5.2 17.8 4.6 16.4 4.6 15 4.6 9 9.4 4.2 16 4.2S27.4 9 27.4 15 22.6 25 16 25Zm6-8.2c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
+</a>
+
+<div id="toastContainer" class="fixed bottom-24 right-5 z-[60] flex flex-col gap-2 items-end"></div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<script>
+  (function () {
+    function mostrarToast(mensaje) {
+      const cont = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-fh';
+      el.textContent = mensaje;
+      cont.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'all .25s ease';
+        setTimeout(() => el.remove(), 250);
+      }, 2800);
+    }
+
+    const form = document.getElementById('formContactoFH');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const boton = form.querySelector('button[type="submit"]');
+        const textoOriginal = boton.textContent;
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+        const datos = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+          if (!res.ok) throw new Error('Error al enviar');
+          mostrarToast('Mensaje enviado. Te contactaremos pronto.');
+          form.reset();
+        } catch (err) {
+          mostrarToast('No se pudo enviar el mensaje. Intenta de nuevo.');
+        } finally {
+          boton.disabled = false;
+          boton.textContent = textoOriginal;
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>

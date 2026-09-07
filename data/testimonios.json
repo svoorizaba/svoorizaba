@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "texto": "Buen trabajo, buen equipo, buena actitud. El soporte es magnífico, siempre hay alguien que conteste el teléfono y resuelva mis dudas. Contratamos la página empresarial y con la estrategia propuesta estamos llegando a nuestros objetivos.",
+    "nombre": "Jesús Ruiz J.",
+    "puesto": "Representante Legal"
+  },
+  {
+    "id": "2",
+    "texto": "Excelente equipo de trabajo. Nos ayudaron a mejorar nuestra presencia en línea y el servicio al cliente ha sido espectacular. Realmente aprecio cómo siempre están disponibles para cualquier duda que pueda surgir.",
+    "nombre": "Mariana López G.",
+    "puesto": "CEO, Empresa XYZ"
+  },
+  {
+    "id": "3",
+    "texto": "La página quedó lista en el tiempo que nos prometieron y desde el primer mes empezamos a recibir mensajes de clientes nuevos por WhatsApp. Se nota que entienden de negocios, no solo de diseño.",
+    "nombre": "Carlos Hernández M.",
+    "puesto": "Dueño, Refaccionaria Hernández"
+  }
+]

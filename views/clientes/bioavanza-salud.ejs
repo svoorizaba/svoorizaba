@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioAvanza Salud · Recuperando Vida</title>
+<meta name="description" content="BioAvanza Salud: suplementos naturales y programas de bienestar para recuperar tu energía y vitalidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          sage: { 900:'#243B31', 700:'#33574A', 500:'#4C7E6B' },
+          terracotta: { 500:'#C1683F', 600:'#A6552F' },
+          linen: { 50:'#FAF6EF', 100:'#F1E9DA' }
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FAF6EF; }
+  ::selection { background: #C1683F; color: #fff; }
+
+  .bio-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: #33574A;
+  }
+
+  .btn-terracotta {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; padding: 0 30px; border-radius: 999px;
+    background: #C1683F; color: #FAF6EF; font-weight: 600;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .btn-terracotta:hover { background: #A6552F; transform: translateY(-1px); }
+
+  .btn-outline-sage {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; padding: 0 30px; border-radius: 999px;
+    border: 1.5px solid #33574A; color: #33574A; font-weight: 600;
+    transition: background .2s ease, color .2s ease;
+  }
+  .btn-outline-sage:hover { background: #33574A; color: #FAF6EF; }
+
+  .benefit-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid #E7DCC8; border-radius: 999px;
+    padding: 10px 18px; font-size: 13.5px; font-weight: 500; color: #243B31;
+  }
+
+  .product-card-bio {
+    background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 16px 34px -22px rgba(36,59,49,0.4);
+  }
+  .product-img-bio { width: 100%; height: 190px; object-fit: cover; }
+
+  .ingredient-badge {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    text-align: center;
+  }
+  .ingredient-circle {
+    width: 64px; height: 64px; border-radius: 999px;
+    background: #F1E9DA; display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+
+  .quote-card-bio {
+    background: #33574A; color: #FAF6EF; border-radius: 20px; padding: 30px;
+  }
+
+  .cert-pill-bio {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid #E7DCC8; border-radius: 999px;
+    padding: 9px 16px; font-size: 12.5px; font-weight: 600; color: #33574A;
+    background: #fff;
+  }
+
+  .field-bio {
+    width: 100%; height: 46px; padding: 0 14px;
+    border-radius: 10px; border: 1.5px solid #E7DCC8;
+    background: #fff; color: #243B31; font-size: 14px; outline: none;
+  }
+  .field-bio::placeholder { color: #A69A85; }
+  textarea.field-bio { height: auto; padding-top: 12px; resize: none; }
+  .field-bio:focus { border-color: #C1683F; }
+
+  .toast-bio {
+    background: #243B31; color: #FAF6EF; border: 1.5px solid #C1683F;
+    font-size: 13px; padding: 12px 16px; border-radius: 10px;
+    animation: toastInBio .25s ease;
+  }
+  @keyframes toastInBio { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="text-sage-900 font-body antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-linen-50/90 backdrop-blur border-b border-linen-100">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-[70px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="bio-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAF6EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10a12 12 0 0 1-4 0Z"/></svg>
+      </span>
+      <span class="font-display leading-tight">
+        <span class="block text-[17px] font-600 tracking-tight text-sage-900">BioAvanza</span>
+        <span class="block text-[9.5px] uppercase tracking-[0.2em] text-terracotta-500 font-body font-semibold -mt-0.5">Recuperando Vida</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-sage-900/70">
+      <a href="#productos" class="hover:text-terracotta-500 transition-colors">Productos</a>
+      <a href="#beneficios" class="hover:text-terracotta-500 transition-colors">Beneficios</a>
+      <a href="#nosotros" class="hover:text-terracotta-500 transition-colors">Nosotros</a>
+      <a href="#contacto" class="hover:text-terracotta-500 transition-colors">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn-terracotta !h-11 !px-6 !text-[13px]">Quiero recuperar mi energía</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-16 md:pt-20 md:pb-20 grid lg:grid-cols-[1fr_1fr] gap-14 items-center">
+  <div>
+    <p class="text-terracotta-500 text-xs font-semibold tracking-[0.2em] uppercase mb-5">Recuperando Vida</p>
+    <h1 class="font-display text-[2.4rem] leading-[1.12] sm:text-5xl md:text-[3.3rem] font-600 text-sage-900">
+      Recupera tu energía desde adentro
+    </h1>
+    <p class="mt-6 max-w-md text-sage-900/65 text-lg">
+      Suplementos naturales formulados para acompañarte en cansancio, estrés y baja energía, con ingredientes de calidad certificada.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a href="#productos" class="btn-terracotta">Conoce los productos</a>
+      <a href="#contacto" class="btn-outline-sage">Hablar con un asesor</a>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-3">
+      <span class="benefit-pill">🌿 100% ingredientes naturales</span>
+      <span class="benefit-pill">🔬 Calidad certificada</span>
+    </div>
+  </div>
+  <div class="rounded-3xl overflow-hidden aspect-[4/5]">
+    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80" class="w-full h-full object-cover" alt="Suplementos naturales BioAvanza">
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20 border-t border-linen-100">
+  <div class="text-center mb-12">
+    <p class="text-terracotta-500 text-xs tracking-wide font-bold uppercase mb-2">Línea BioAvanza</p>
+    <h2 class="font-display text-3xl md:text-4xl font-600 text-sage-900">Productos para cada necesidad</h2>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="product-card-bio">
+      <img src="https://images.unsplash.com/photo-1611071536241-8e0e2c3d5b8f?auto=format&fit=crop&w=500&q=80" class="product-img-bio" alt="BioAvanza Energía">
+      <div class="p-5">
+        <p class="font-display text-lg font-600">BioAvanza Energía</p>
+        <p class="text-sage-900/60 text-sm mt-1">Complejo B y hierro para combatir el cansancio diario.</p>
+        <a href="https://wa.me/522721234500?text=Hola%2C%20quiero%20preguntar%20por%20BioAvanza%20Energ%C3%ADa" target="_blank" class="btn-outline-sage w-full mt-4 !h-10 !text-[13px]">Preguntar</a>
+      </div>
+    </div>
+    <div class="product-card-bio">
+      <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=500&q=80" class="product-img-bio" alt="BioAvanza Defensas">
+      <div class="p-5">
+        <p class="font-display text-lg font-600">BioAvanza Defensas</p>
+        <p class="text-sage-900/60 text-sm mt-1">Vitamina C, zinc y equinácea para tu sistema inmune.</p>
+        <a href="https://wa.me/522721234500?text=Hola%2C%20quiero%20preguntar%20por%20BioAvanza%20Defensas" target="_blank" class="btn-outline-sage w-full mt-4 !h-10 !text-[13px]">Preguntar</a>
+      </div>
+    </div>
+    <div class="product-card-bio">
+      <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=500&q=80" class="product-img-bio" alt="BioAvanza Calma">
+      <div class="p-5">
+        <p class="font-display text-lg font-600">BioAvanza Calma</p>
+        <p class="text-sage-900/60 text-sm mt-1">Magnesio y manzanilla para descansar mejor y bajar el estrés.</p>
+        <a href="https://wa.me/522721234500?text=Hola%2C%20quiero%20preguntar%20por%20BioAvanza%20Calma" target="_blank" class="btn-outline-sage w-full mt-4 !h-10 !text-[13px]">Preguntar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS / INGREDIENTES -->
+<section id="beneficios" class="bg-sage-700 py-16 md:py-20">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="text-center mb-12">
+      <p class="text-linen-100/60 text-xs tracking-wide font-bold uppercase mb-2">Ciencia natural</p>
+      <h2 class="font-display text-3xl md:text-4xl font-600 text-linen-50">Ingredientes que marcan la diferencia</h2>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+      <div class="ingredient-badge">
+        <div class="ingredient-circle">🍊</div>
+        <p class="text-linen-50 text-sm font-medium">Vitamina C</p>
+      </div>
+      <div class="ingredient-badge">
+        <div class="ingredient-circle">🌱</div>
+        <p class="text-linen-50 text-sm font-medium">Complejo B</p>
+      </div>
+      <div class="ingredient-badge">
+        <div class="ingredient-circle">🧂</div>
+        <p class="text-linen-50 text-sm font-medium">Magnesio</p>
+      </div>
+      <div class="ingredient-badge">
+        <div class="ingredient-circle">🌼</div>
+        <p class="text-linen-50 text-sm font-medium">Manzanilla</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS + TESTIMONIO -->
+<section id="nosotros" class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-terracotta-500 text-xs tracking-wide font-bold uppercase mb-2">Quiénes somos</p>
+      <h2 class="font-display text-3xl md:text-4xl font-600 text-sage-900 mb-5">Bienestar hecho con propósito</h2>
+      <p class="text-sage-900/65 leading-relaxed mb-4">
+        BioAvanza nace para acompañar a personas que sienten que su energía ya no les alcanza. Formulamos cada producto con ingredientes naturales de calidad certificada, sin promesas exageradas.
+      </p>
+      <p class="text-sage-900/65 leading-relaxed">
+        Trabajamos junto con nutriólogos para que cada fórmula tenga un propósito claro: ayudarte a recuperar tu vida, un hábito a la vez.
+      </p>
+    </div>
+    <div class="quote-card-bio">
+      <p class="text-lg leading-relaxed mb-5">"Empecé a tomar BioAvanza Energía hace tres meses y de verdad noto la diferencia en mis tardes. Ya no llego arrastrándome a mi casa."</p>
+      <p class="font-semibold text-sm">Lic. Jesús Ruiz J.</p>
+      <p class="text-linen-100/60 text-xs">Cliente BioAvanza</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section class="max-w-6xl mx-auto px-5 md:px-8 pb-16 md:pb-20">
+  <p class="text-center text-sage-900/40 text-xs uppercase tracking-[0.2em] mb-6">Calidad respaldada</p>
+  <div class="flex flex-wrap justify-center gap-3">
+    <span class="cert-pill-bio">✓ Registro COFEPRIS</span>
+    <span class="cert-pill-bio">✓ Buenas Prácticas de Manufactura</span>
+    <span class="cert-pill-bio">✓ Libre de gluten</span>
+    <span class="cert-pill-bio">✓ Sin conservadores artificiales</span>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="bg-linen-100">
+  <div class="max-w-2xl mx-auto px-5 md:px-8 py-20 text-center">
+    <p class="text-terracotta-500 text-xs tracking-wide font-bold uppercase mb-2">Contacto</p>
+    <h2 class="font-display text-3xl md:text-4xl font-600 text-sage-900 mb-4">Empecemos tu recuperación</h2>
+    <p class="text-sage-900/60 mb-10">Cuéntanos cómo te sientes y un asesor te recomendará el producto adecuado para ti.</p>
+
+    <form id="formContactoBio" class="text-left bg-white rounded-2xl p-6 md:p-8 space-y-4 shadow-sm mb-10">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <input required name="nombre" type="text" placeholder="Nombre" class="field-bio">
+        <input required name="telefono" type="tel" placeholder="Teléfono" class="field-bio">
+      </div>
+      <input required name="email" type="email" placeholder="Correo electrónico" class="field-bio">
+      <textarea required name="mensaje" rows="3" placeholder="Cuéntanos qué te gustaría mejorar (energía, defensas, descanso...)" class="field-bio"></textarea>
+      <button type="submit" class="btn-terracotta w-full">Enviar</button>
+    </form>
+
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-sage-900/70">
+      <span>📞 272 123 4500</span>
+      <span>✉️ hola@bioavanza.mx</span>
+      <span>📍 Orizaba, Veracruz</span>
+    </div>
+  </div>
+</section>
+
+<footer class="py-7 text-center text-[11px] text-sage-900/40">
+  <p>© <span id="anio"></span> BioAvanza Salud — Orizaba, Ver. · Sitio realizado por SVO</p>
+</footer>
+
+<div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 items-end"></div>
+
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<script>
+  (function () {
+    function mostrarToast(mensaje) {
+      const cont = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'toast-bio';
+      el.textContent = mensaje;
+      cont.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(8px)';
+        el.style.transition = 'all .25s ease';
+        setTimeout(() => el.remove(), 250);
+      }, 2800);
+    }
+
+    const form = document.getElementById('formContactoBio');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const boton = form.querySelector('button[type="submit"]');
+        const textoOriginal = boton.textContent;
+        boton.disabled = true;
+        boton.textContent = 'Enviando...';
+        const datos = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/contacto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+          });
+          if (!res.ok) throw new Error('Error al enviar');
+          mostrarToast('Mensaje enviado. Un asesor te contactará pronto.');
+          form.reset();
+        } catch (err) {
+          mostrarToast('No se pudo enviar. Intenta de nuevo.');
+        } finally {
+          boton.disabled = false;
+          boton.textContent = textoOriginal;
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
