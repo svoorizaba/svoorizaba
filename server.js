@@ -16,7 +16,7 @@ const FILE_MENSAJES = path.join(__dirname, 'data', 'mensajes.json');
 // Credenciales de acceso al panel de administración.
 // Cámbialas antes de publicar el sitio en producción.
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASS || 'orizaba2024';
+const ADMIN_PASS = process.env.ADMIN_PASS || 'wireless2022';
 
 // ---------- Config ----------
 app.set('view engine', 'ejs');
